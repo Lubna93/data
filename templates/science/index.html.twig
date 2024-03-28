@@ -1,0 +1,103 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ouvrir | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+    .cart {
+        background-color: var(--grayb);
+        width: 20rem;
+        min-height: 16.5rem;
+        box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
+        border-radius: 0.5rem;
+        margin: 1rem;
+        transition: opacity 400ms;
+    }
+    .cart:hover {
+        box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+        transform: translateY(-1px);
+	    opacity:0.7;
+    }
+    .img1 {
+        width: 20rem;
+        height: 10rem;
+        object-fit: cover;
+        background: linear-gradient(to right, #8360c3, #2ebf91);
+        border-radius: 0.5rem 0.5rem 0 0;
+    }
+    .img2 {
+        width: 20rem;
+        height: 10rem;
+        object-fit: cover;
+        border-radius: 0.5rem 0.5rem 0 0;
+        
+    }
+    
+</style>
+<div class="container pt-4">
+<section>
+        <div class="py-4">
+            <div>
+                <a href={{ path('app_science') }}>
+                <h1 class="text-start fw-bold text-uppercase">Sciences</h1> 
+                </a>
+            </div>
+
+        </div>
+
+            <div class="row">
+                <div class="col-auto">
+                    <a href="{{ path('app_science') }}">
+                        <p class="btn btn-dark py-1 mr-1">TOUT</p>
+                    </a>
+
+                    {% for tag1 in tags|sort %}
+                    {% set route = app.request.attributes.get('_route_params') %}
+
+                    <a  href={{ path('science_tag', {'slugtag' : tag1.id} ) }}>
+                            <p class="btn btn-outline-dark py-1 mr-1">
+                            {{ tag1.titret }}
+                            </p>
+                    </a> 
+                    {% endfor %}
+                </div>
+            </div>
+
+</section>
+
+<section>
+    <div class="row">
+    {% for science in pager %}  
+            <div class="col d-flex justify-content-center ">
+            <a href={{ path('science_show', {'id' : science.id}) }}> 
+                <div class="cart text-start">
+                    <div class="img1">
+                        {% if science.image == true %}
+                            <img class="img2" src="{{ asset(science.ImageUrl)|imagine_filter('squared_thumbnail_small') }}" alt="image">
+                        {% else %}
+                            <img class="img2" src="" alt="">
+                        {% endif %}
+                    </div>
+                    <p class="fw-bold text-dark mt-3 mb-2 px-4">{{science.titre|length > 30 ? science.titre|slice(0, 30) ~ '…' : science.titre}}</p>
+                    <div class="px-4">
+                        {% for tag1 in science.Tag1|slice(0, 2) %}
+                            <p class="btn btn-outline-dark btn-sm py-0 mb-1">{{ tag1.titret }}</p>
+                        {% endfor %}
+                        {% if science.Tag1|length > 2 %}
+                            <p class="btn btn-outline-dark btn-sm py-0 mb-1">...</p>
+                        {% endif %}
+                    </div>
+                    
+                </div>  
+            </a> 
+            </div>
+    {% endfor %}
+    <div class="pager d-flex justify-content-center align-items-center pt-4">{{ pagerfanta(pager) }}</div>
+    </div>
+</section>
+
+
+</div>
+<br><br>
+{% endblock %}

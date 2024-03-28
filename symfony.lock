@@ -1,4 +1,7 @@
 {
+    "babdev/pagerfanta-bundle": {
+        "version": "v3.8.0"
+    },
     "doctrine/doctrine-bundle": {
         "version": "2.11",
         "recipe": {
@@ -24,6 +27,28 @@
         "files": [
             "config/packages/doctrine_migrations.yaml",
             "migrations/.gitignore"
+        ]
+    },
+    "easycorp/easyadmin-bundle": {
+        "version": "4.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
+    },
+    "liip/imagine-bundle": {
+        "version": "2.12",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.8",
+            "ref": "d1227d002b70d1a1f941d91845fcd7ac7fbfc929"
+        },
+        "files": [
+            "./config/packages/liip_imagine.yaml",
+            "./config/routes/liip_imagine.yaml"
         ]
     },
     "phpunit/phpunit": {
@@ -246,6 +271,18 @@
         "files": [
             "config/packages/twig.yaml",
             "templates/base.html.twig"
+        ]
+    },
+    "symfony/uid": {
+        "version": "6.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "6.2",
+            "ref": "d294ad4add3e15d7eb1bae0221588ca89b38e558"
+        },
+        "files": [
+            "config/packages/uid.yaml"
         ]
     },
     "symfony/ux-turbo": {

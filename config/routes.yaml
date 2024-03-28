@@ -3,3 +3,6 @@ controllers:
         path: ../src/Controller/
         namespace: App\Controller
     type: attribute
+homepage:
+    path: /
+    controller: App\Controller\AccueilController::index

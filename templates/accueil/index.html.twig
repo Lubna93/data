@@ -1,0 +1,84 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+  
+</style>
+
+<div class="container mt-5 p-5">
+<!-- Logo and Title -->
+<div class="row">
+    <div class="col-12 text-center">
+        <h1>Logo</h1>
+        
+        <h2 class="pt-2 pb-5">CORPUS HUMANUM</h2>
+    </div>
+</div>
+
+<!-- Line space -->
+<div class="row mt-3">
+    <div class="col-12"></div>
+</div>
+
+<!-- Search Bar -->
+<div class="row">
+    <div class="col-12">
+        <form>
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Rechercher un jeu de données..." aria-label="Search" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                    <button class="btn btn-secondary" type="button"><i class="fas fa-search"></i></button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Line space -->
+<div class="row mt-3">
+    <div class="col-12"></div>
+</div>
+
+<!-- Boxes with title and icon -->
+<div class="row">
+
+    <div class="col-md-4 p-3">
+    <a href="{{ path('app_deposer') }}" target="_blank">
+        <div class="card bg-light text-center border-0 shadow py-3">
+            <div class="card-body">
+                <i class="fa-regular fa-square-plus fa-2xl"  style="color: #ff8787;"></i>
+                <h5 class="card-title pt-3">Déposer</h5>
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-md-4 p-3">
+    <a href="{{ path('app_traiter') }}" target="_blank">
+        <div class="card bg-light text-center border-0 shadow py-3">
+            <div class="card-body">
+                <i class="fa-solid fa-shapes fa-2xl" style="color: #B197FC;"></i>
+                <h5 class="card-title pt-3">Traiter</h5> 
+            </div>
+        </div>
+    </a>
+    </div>
+
+    <div class="col-md-4 p-3">
+    <a href="{{ path('app_science') }}" target="_blank">
+        <div class="card bg-light text-center border-0 shadow py-3">
+            <div class="card-body">
+                <i class="fa-solid fa-book-open-reader fa-2xl" style="color: #74C0FC;"></i>
+                <h5 class="card-title pt-3">Ouvrir</h5>
+        
+            </div>
+        </div>
+    </a>
+    </div>
+
+</div>
+
+</div>
+{% endblock %}
