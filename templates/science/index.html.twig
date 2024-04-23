@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ouvrir | Corpus Humanum{% endblock %}
+{% block title %}PaulVa | Corpus Humanum{% endblock %}
 
 {% block body %}
 <style>
@@ -30,21 +30,64 @@
         width: 20rem;
         height: 10rem;
         object-fit: cover;
-        border-radius: 0.5rem 0.5rem 0 0;
-        
+        border-radius: 0.5rem 0.5rem 0 0;        
     }
+
     
 </style>
-<div class="container pt-4">
+<div class="container mt-5 px-3">
 <section>
-        <div class="py-4">
-            <div>
-                <a href={{ path('app_science') }}>
-                <h1 class="text-start fw-bold text-uppercase">Sciences</h1> 
+
+        <div class="row d-flex justify-content-evenly pt-4 mx-3">
+            <div class="col-md-auto">
+                <a href={{ path('app_science') }}
+                class="h3 head {{ app.request.get('_route') == 'app_science' or app.request.get('_route') == 'science_tag' ? 'active' }}">                   
+                        PaulVa data                   
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href={{ path('science_realiser') }}
+                class=" h3 head {{ app.request.get('_route') == 'science_realiser' ? 'active' }}"> 
+                        PaulVa Réalisations
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href={{ path('science_rss') }}
+                class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}"> 
+                        Vielle
                 </a>
             </div>
 
         </div>
+<hr>
+    <div class="pb-3">
+        <form
+        class="search input-group"
+        {{ stimulus_controller('search-preview', {
+            url: path('app_science')
+        }) }}
+        action="{{ path('app_science') }}">
+        
+        <button class="input-group-text" type="submit">
+        <i class="fas fa-search content-search-icon"></i>
+        </button>
+            <input
+                autocomplete="off"
+                type="search"
+                name="science"
+                class="form-control input-group-prepend"
+                placeholder="Rechercher..."
+                aria-label="Search"
+                value="{{ app.request.query.get('science')}}"
+                data-action="search-preview#onSearchInput"
+            >
+            <div
+            class="search-preview"
+            data-search-preview-target="result"
+            >
+            </div>
+    </form>
+    </div>
 
             <div class="row">
                 <div class="col-auto">

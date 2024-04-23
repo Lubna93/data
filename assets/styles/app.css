@@ -12,7 +12,8 @@
 
 body {
     background-color: #f9f9fb;
-}
+
+  }
 * {
     font-family: 'Montserrat', sans-serif;
   
@@ -30,3 +31,33 @@ body {
     background-color: #212529;
     border-color: #212529;
   }
+
+  .search-preview {
+    position: absolute;
+    width: 20rem;
+    z-index: 1;
+    padding-left: 2.6rem;
+    margin-top: 2.4rem;
+  }
+
+  .input-group-text {
+    height: 2.37rem;
+    background-color: white;
+  }
+  .input-group-prepend {
+
+  }
+  .search {
+    width: 20rem !important;
+    height: 2.37rem;
+  }
+
+  .head {
+    color: #555555 !important;
+}
+
+.head.active,
+.head:hover {
+    color: black !important;
+    text-decoration: underline 0.2rem #fb3775 !important;
+}

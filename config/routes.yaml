@@ -6,3 +6,8 @@ controllers:
 homepage:
     path: /
     controller: App\Controller\AccueilController::index
+
+# config/routes.yaml
+
+# Define your login route
+

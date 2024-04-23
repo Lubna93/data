@@ -14,6 +14,26 @@
         {% endblock %}
     </head>
     <body>
+        <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid px-5">
+            <a class="navbar-brand" href="/">
+                <img src="{{ asset('images/logo.png') }}" alt="" width="30" height="24" class="d-inline-block align-text-top">
+                Corpus Humanum
+            </a>
+            {% if not is_granted('ROLE_USER') %}
+            <a class="nav-link" href="/login">Connexion <i class="fa-solid fa-user"></i></a>
+            {% endif %}
+            {% if is_granted('ROLE_USER') %}
+            <a class="nav-link" href="/logout">Déconnexion <i class="fa-solid fa-right-from-bracket"></i></a>
+            {% endif %}
+        </div>
+    </nav>
+    
+
+
+
+
+
         {% block body %}{% endblock %}
     </body>
 </html>

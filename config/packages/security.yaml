@@ -1,29 +1,46 @@
 security:
+    enable_authenticator_manager: true
     # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
     password_hashers:
         Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface: 'auto'
     # https://symfony.com/doc/current/security.html#loading-the-user-the-user-provider
+
     providers:
-        users_in_memory: { memory: null }
+        chain_provider:
+            chain:
+                providers: [in_memory, uid_user_provider]
+        in_memory:
+            memory:
+                users:
+                    __NO_USER__:
+                        password:
+                        roles: ROLE_ANON
+        uid_user_provider:
+            id: uid_user_provider
+
     firewalls:
         dev:
-            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
+
+        l3_firewall:
+            pattern: ^/
+            provider: chain_provider
+            security: true
+            custom_authenticators:
+                - cas.security.authentication.authenticator
+            logout:
+                path: /logout
+                # success_handler: authentication_handler
+                # invalidate_session: false
         main:
+            pattern: ^/
+            security: true
             lazy: true
-            provider: users_in_memory
+            provider: chain_provider
+            custom_authenticators:
+                - cas.security.authentication.authenticator
 
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#the-firewall
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
-
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
-    access_control:
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
 
 when@test:
     security:
@@ -37,3 +54,4 @@ when@test:
                 cost: 4 # Lowest possible value for bcrypt
                 time_cost: 3 # Lowest possible value for argon
                 memory_cost: 10 # Lowest possible value for argon
+

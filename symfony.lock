@@ -1,6 +1,29 @@
 {
+    "api-platform/core": {
+        "version": "3.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.2",
+            "ref": "696d44adc3c0d4f5d25a2f1c4f3700dd8a5c6db9"
+        },
+        "files": [
+            "config/packages/api_platform.yaml",
+            "config/routes/api_platform.yaml",
+            "src/ApiResource/.gitignore"
+        ]
+    },
     "babdev/pagerfanta-bundle": {
         "version": "v3.8.0"
+    },
+    "doctrine/annotations": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.10",
+            "ref": "64d8583af5ea57b7afa4aba4b159907f3a148b05"
+        }
     },
     "doctrine/doctrine-bundle": {
         "version": "2.11",
@@ -38,6 +61,12 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "l3/cas-guard-bundle": {
+        "version": "1.1.15"
+    },
+    "l3/uid-user-bundle": {
+        "version": "1.0.12"
+    },
     "liip/imagine-bundle": {
         "version": "2.12",
         "recipe": {
@@ -49,6 +78,18 @@
         "files": [
             "./config/packages/liip_imagine.yaml",
             "./config/routes/liip_imagine.yaml"
+        ]
+    },
+    "nelmio/cors-bundle": {
+        "version": "2.4",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "1.5",
+            "ref": "6bea22e6c564fba3a1391615cada1437d0bde39c"
+        },
+        "files": [
+            "config/packages/nelmio_cors.yaml"
         ]
     },
     "phpunit/phpunit": {

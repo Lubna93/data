@@ -39,6 +39,12 @@ class OuvrirController extends AbstractController
         $pagerfanta->setMaxPerPage(12);
         $pagerfanta->setCurrentPage($request->query->get('page', 1));
 
+        if ($request->query->get('preview')) {
+            return $this->render('science/_searchPreview.html.twig', [
+                'pager' => $pagerfanta,
+            ]);
+        }
+
         return $this->render('science/index.html.twig', [
             'controller_name' => 'Science',
             'pager' => $pagerfanta,
@@ -98,5 +104,33 @@ class OuvrirController extends AbstractController
                 'pager' => $pagerfanta, // Pass the Pagerfanta instance to the template
             ]);
         }
+
+
+        #[Route('/science-upvm3', name: 'science_rss')]
+    
+        public function viewRSSAAction(Request $request){
+            // $rssFileNews = 'https://www.univ-montp3.fr/fr/news/1/rss.xml/11';
+            $rssFileNews = 'https://www.didaktic.fr/feed';
+
+            $rssFileAgenda = 'https://www.univ-montp3.fr/fr/agenda/1/all/rss.xml';
+            
+            $rss = simplexml_load_file($rssFileNews);
+            // $rssagenda = simplexml_load_file($rssFileAgenda);
+    
+            return $this->render('science/rss.html.twig', [
+                'rss' => $rss,
+                // 'rssagenda' => $rssagenda,
+            ]);
+        }
+        
+        #[Route('/realisations', name: 'science_realiser')]
+    
+        public function realiser(Request $request){
+;
+    
+            return $this->render('science/realiser.html.twig', [
+
+            ]);
+        } 
 
 }

@@ -56,6 +56,17 @@ class ScienceRepository extends ServiceEntityRepository
             ->orderBy('Science.id', 'DESC')
         ;
 
+        if ($search) {
+            $queryBuilder
+            ->andWhere(
+                $queryBuilder->expr()->orX(
+                    $queryBuilder->expr()->like('LOWER(Science.titre)', ':searchTerm'),
+                    $queryBuilder->expr()->like('LOWER(Science.body)', ':searchTerm'),
+                )
+            )
+            ->setParameter('searchTerm', '%' . strtolower($search) . '%');
+        }
+
         return $queryBuilder;
 
     }

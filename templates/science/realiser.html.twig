@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} PaulVa Réalisations | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="container mt-5 px-3">
+
+
+<section>
+
+	<div class="row d-flex justify-content-evenly pt-4 mx-3">
+		<div class="col-md-auto">
+			<a href={{ path('app_science') }}
+			class="h3 head {{ app.request.get('_route') == 'app_science' ? 'active' }}">                   
+					PaulVa data                   
+			</a>
+		</div>
+		<div class="col-md-auto">
+			<a href={{ path('science_realiser') }}
+			class=" h3 head {{ app.request.get('_route') == 'science_realiser' ? 'active' }}"> 
+					PaulVa Réalisations
+			</a>
+		</div>
+		<div class="col-md-auto">
+			<a href={{ path('science_rss') }}
+			class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}"> 
+					Vielle
+			</a>
+		</div>
+	</div>
+	<hr>
+	</section>
+
+</div>
+
+{% endblock %}
+
+
