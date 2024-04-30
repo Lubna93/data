@@ -8,7 +8,36 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+
+use Carbon\Carbon;
+
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Metadata\ApiFilter;
+
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+
+use Symfony\Component\Validator\Constraints as Assert;
+
 #[ORM\Entity(repositoryClass: ScienceRepository::class)]
+#[ApiResource(
+    description: 'A rare and valuable treasure.',
+    shortName: 'Science',
+    operations: [
+        new Get(),
+        new GetCollection(),
+        new Post(),
+        new Put(),
+        new Patch(),
+    ]
+)]
+#[ApiFilter(BooleanFilter::class, properties: ['published'])]
+
 class Science
 {
     #[ORM\Id]
@@ -16,12 +45,14 @@ class Science
     #[ORM\Column]
     private ?int $id = null;
 
+    #[ApiFilter(SearchFilter::class, strategy: 'partial')]
     #[ORM\Column(length: 255)]
     private ?string $titre = null;
 
     #[ORM\Column(length: 500, nullable: true)]
     private ?string $image = null;
 
+    #[Assert\NotBlank]
     #[ORM\Column(type: Types::TEXT, nullable: true)]
     private ?string $body = null;
 

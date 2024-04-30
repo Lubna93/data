@@ -17,6 +17,11 @@ security:
                         roles: ROLE_ANON
         uid_user_provider:
             id: uid_user_provider
+        # used to reload user from session & other features (e.g. switch_user)
+        app_user_provider:
+            entity:
+                class: App\Entity\Account
+                property: uid
 
     firewalls:
         dev:
