@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Sciences | UPVM3{% endblock %}
+
+{% block body %}
+<style>
+
+	.cart {
+		background-color: white;
+		width: 20rem;
+		min-height: 10rem;
+		box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
+		border-radius: 0.5rem;
+		margin: 1rem;
+		transition: opacity 400ms;
+		padding: 0.4rem;
+
+	}
+	.cart:hover {
+		box-shadow: 0 5px 35px 0 rgba(0, 0, 0, .1);
+		transform: translateY(-1px);
+		opacity: 0.7;
+	}
+	{# h2,
+	h4,
+	h3 {
+		display: none;
+	} #}
+
+	{# .field-item p {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+		font-size: 0;
+
+	} #}
+	{# .field-item .even div {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+	.field-item {
+		font-size: 0;
+	} #}
+
+	.titreActu {
+		padding: 0.5rem;
+		font-size: 0.9rem;
+		font-weight: bold;
+		color: black;
+	}
+
+	{# .img-responsive {
+		object-fit: cover;
+		width: 14rem;
+		height: 8rem;
+		padding-left: 0.2rem;
+		padding-right: 0.2rem;
+		text-align: center;
+		border-radius: 0.5rem;
+	} #}
+
+	{# .field-type-text-with-summary {
+		text-indent: 100%;
+		white-space: nowrap;
+		overflow: hidden;
+	} #}
+
+	.dateN {
+		font-size: 0.8rem;
+		color: black;
+		text-align: center;
+	}
+</style>
+
+<div class="container mt-5 px-3">
+
+
+<section>
+
+	<div class="row d-flex justify-content-evenly pt-4 mx-3">
+		<div class="col-md-auto">
+			<a href={{ path('app_science') }}
+			class="h3 head {{ app.request.get('_route') == 'app_science' ? 'active' }}">                   
+					PaulVa data                   
+			</a>
+		</div>
+		<div class="col-md-auto">
+			<a href={{ path('science_realiser') }}
+			class=" h3 head {{ app.request.get('_route') == 'science_realiser' ? 'active' }}"> 
+					PaulVa Réalisations
+			</a>
+		</div>
+		<div class="col-md-auto">
+			<a href={{ path('science_rss') }}
+			class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}"> 
+					Vielle
+			</a>
+		</div>
+	</div>
+	<hr>
+	</section>
+
+	{# <div class="text-center">
+		<section>
+			<div class="row">
+				{% for item in rss.channel %}
+					{% for item in item|slice(4, 12) %}
+						<div class="col d-flex justify-content-center align-items-reverse">
+							<a href="{{ item.link|default('') }}" target="_blank">
+								<div class="cart">
+									<p class="titreActu">{{ item.title|length > 30 ? item.title|slice(0, 30) ~ '…' : item.title }}</p>
+									<p class="text-dark">
+										<small>
+										<i class="fa-regular fa-calendar-days"></i>
+										{{ item.pubDate|date("d/m/Y")}}
+										</small>
+									</p>
+									<p class="des">{{ item.description|default('')|join('<br>')|markdown_to_html}}</p>
+								</div>
+							</a>
+						</div>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</section>
+	</div> #}
+
+	<div class="text-center">
+    <section>
+        <div class="row">
+            {% for item in rss.channel.item|slice(0, 30) %}
+                <div class="col d-flex justify-content-center align-items-reverse">
+                    <a href="{{ item.link|default('') }}" target="_blank">
+                        <div class="cart">
+                            <p class="titreActu">{{ item.title }}</p>
+                            <p class="text-dark">
+                                <small>
+                                    <i class="fa-regular fa-calendar-days"></i>
+                                    {{ item.pubDate|date("d/m/Y")}}
+                                </small>
+                            </p>
+                            <p class="des">{{ item.description[0]|default('')|join('<br>')|markdown_to_html}}</p>
+							{# <img src="{{ item.image.url|default('') }}" alt="RSS Image"> #}
+						</div>
+                    </a>
+                </div>
+            {% endfor %}
+        </div>
+    </section>
+</div>
+
+
+	<br>
+</div>
+{% endblock %}

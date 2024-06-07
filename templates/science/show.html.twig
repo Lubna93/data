@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{science.titre}} | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+        .imgR {
+            margin: 1rem 0;
+            max-height: 30rem;
+            border-radius: 1rem;
+            max-width: 100%;
+        }
+</style>
+
+<div class="container mt-5">
+
+
+	<section>
+		<div class="text-center">
+			<h1>
+				<strong>{{science.titre}}</strong>
+			</h1>
+		</div>
+		<hr>
+	</section>
+
+	<section class="contentV">
+		<div class="text-center">
+			{% for tag1 in science.Tag1 %}
+				<p class="btn btn-light btn-sm">{{tag1.titret}}</p>
+			{% endfor %}
+		</div>
+		{% if science.body != null %}
+			<div >{{science.body|markdown_to_html}}</div>
+		{% endif %}
+
+
+		<div class="text-center">
+		{% if science.Image != null %}
+			<img class="imgR img-fluid" src="{{science.ImageUrl|imagine_filter('squared_thumbnail_grand')}}" alt="imageActualites">
+		{% endif %}
+			<p class="dateV">Publié le :{{science.createdat | date("d/m/Y")}}</p>
+		</div>
+	</section>
+
+
+</div>
+
+<br><br>
+{% endblock %}

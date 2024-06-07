@@ -1,0 +1,108 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+.card:hover {
+    box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+    transform: translateY(-1px);
+    opacity:0.8;
+}
+#bk {			
+    width: 18rem;
+}
+
+</style>
+
+<div class="container mt-2 p-5">
+<!-- Logo and Title -->
+<div class="row">
+    <div class="col-12 text-center">
+        <img src="{{ asset('images/logo.png') }}" style="height:5rem;">
+        
+        {# <h1 class="pt-2 pb-5">CORPUS HUMANUM</h1> #}
+    </div>
+    <div class="text-center ">
+        <h2 class=" pt-5 fw-light">
+            Ouvrir . Traiter . Partager la donnée
+        </h2>
+    </div>
+</div>
+
+<!-- Line space -->
+<br>
+
+<!-- Search Bar -->
+<div class="row px-5 mx-3">
+    <div class="col-12">
+        <form >
+            <div class="input-group mb-3 border border-black border-3">
+                <input type="text" class="form-control rounded-0 p-3" placeholder="Rechercher un jeu de données..." aria-label="Search" aria-describedby="basic-addon2" >
+                <div class="input-group-append ">
+                    <button class="btn btn-dark rounded-0 p-3" type="button"><i class="fas fa-search"></i> Rechercher</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="d-flex align-items-end flex-column mb-3" >
+        <a href="/">
+            <div class="mt-auto p-2">Recherche avancée <i class="fa-brands fa-searchengin"></i> </div>
+        </a>
+    </div>
+</div>
+
+<!-- Line space -->
+<br>
+
+<!-- Boxes with title and icon -->
+<div class="row">
+
+    <div class="col d-flex justify-content-center p-3 p-md-4">
+        <a href="{{ path('app_deposer') }}" target="_blank">
+            <div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
+                <div class="card-body px-5 px-md-2 px-sm-1">
+                    <i class="fa-solid fa-layer-group fa-2xl"></i>
+                    <h5 class="card-title pt-3 fw-bold text-nowrap">Déposer</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> 
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col d-flex justify-content-center p-3 p-md-4">
+        <a href="{{ path('app_traiter') }}" target="_blank">
+            <div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
+                <div class="card-body px-5 px-md-2 px-sm-1">
+                    <i class="fa-solid fa-chart-pie fa-2xl"></i>
+                    <h5 class="card-title pt-3 fw-bold text-nowrap">Traiter</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>  
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col d-flex justify-content-center p-3 p-md-4">
+        <a href="{{ path('app_science') }}" target="_blank">
+            <div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
+                <div class="card-body px-5 px-md-2 px-sm-1">
+                    <i class="fa-solid fa-lock-open fa-2xl"></i>
+                    <h5 class="card-title pt-3 fw-bold text-nowrap">Ouvrir</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> 
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+</div>
+{% endblock %}

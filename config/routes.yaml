@@ -1,0 +1,13 @@
+controllers:
+    resource:
+        path: ../src/Controller/
+        namespace: App\Controller
+    type: attribute
+homepage:
+    path: /
+    controller: App\Controller\AccueilController::index
+
+# config/routes.yaml
+
+# Define your login route
+

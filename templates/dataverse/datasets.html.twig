@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Dataset | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+<div class="container mt-5 px-5">
+    <div class="row">
+        <div class="col-12 text-center">
+             <h1 class="fw-bold pb-4">Latest Datasets</h1>
+        </div>
+    </div>
+</div>
+
+<section class="container px-4">
+
+<ul>
+    {% for dataset in datasets %}
+        <li>
+            <h2><a href="{{ dataset.url }}" target="_blank">{{ dataset.name }}</a></h2>
+            <p>Description: {{ dataset.description }}</p>
+            {# <p>Published At: {{ dataset.published_at }}</p> #}
+            <p><strong>Publisher:</strong> {{ dataset.publisher }}</p>
+            {# <p>Global ID: {{ dataset.global_id }}</p> #}
+            {# <p>Identifier of Dataverse: {{ dataset.identifier_of_dataverse }}</p> #}
+            {# <p>Name of Dataverse: {{ dataset.name_of_dataverse }}</p> #}
+            {# <p>Storage Identifier: {{ dataset.storageIdentifier }}</p> #}
+            {# <p>File Count: {{ dataset.fileCount }}</p> #}
+            {# <p>Version ID: {{ dataset.versionId }}</p> #}
+            {# <p>Version State: {{ dataset.versionState }}</p> #}
+            <p><strong>Created At:</strong> {{ dataset.createdAt }}</p>
+            {# <p>Updated At: {{ dataset.updatedAt }}</p> #}
+        </li>
+    {% endfor %}
+</ul>
+
+</section>
+
+<br>
+<br>
+{% endblock %}
