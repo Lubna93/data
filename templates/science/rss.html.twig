@@ -92,6 +92,12 @@
 			</a>
 		</div>
 		<div class="col-md-auto">
+			<a href={{ path('entrepot') }}
+			class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}"> 
+					Entrepôt
+			</a>
+		</div>
+		<div class="col-md-auto">
 			<a href={{ path('science_rss') }}
 			class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}"> 
 					Vielle

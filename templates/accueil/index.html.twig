@@ -35,7 +35,7 @@
 <br>
 
 <!-- Search Bar -->
-<div class="row px-5 mx-3">
+<div class="row px-lg-5 mx-lg-3 px-md-2 mx-md-2 px-sm-1 mx-sm-0">
     <div class="col-12">
         <form >
             <div class="input-group mb-3 border border-black border-3">
@@ -60,10 +60,10 @@
 <div class="row">
 
     <div class="col d-flex justify-content-center p-3 p-md-4">
-        <a href="{{ path('app_deposer') }}" target="_blank">
+        <a href="https://entrepot.recherche.data.gouv.fr/loginpage.xhtml;jsessionid=d9dab92a119c004ce5b60e7e7e05?redirectPage=%2Fdataverse.xhtml" target="_blank">
             <div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
                 <div class="card-body px-5 px-md-2 px-sm-1">
-                    <i class="fa-solid fa-layer-group fa-2xl"></i>
+                    <img src="{{ asset('images/accueil/deposer.svg') }}" alt="logo" style="height: 4rem;">
                     <h5 class="card-title pt-3 fw-bold text-nowrap">Déposer</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> 
                 </div>
@@ -75,7 +75,7 @@
         <a href="{{ path('app_traiter') }}" target="_blank">
             <div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
                 <div class="card-body px-5 px-md-2 px-sm-1">
-                    <i class="fa-solid fa-chart-pie fa-2xl"></i>
+                    <img src="{{ asset('images/accueil/traiter.svg') }}" alt="logo" style="height: 4rem;">
                     <h5 class="card-title pt-3 fw-bold text-nowrap">Traiter</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>  
                 </div>
@@ -87,7 +87,7 @@
         <a href="{{ path('app_science') }}" target="_blank">
             <div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
                 <div class="card-body px-5 px-md-2 px-sm-1">
-                    <i class="fa-solid fa-lock-open fa-2xl"></i>
+                    <img src="{{ asset('images/accueil/ouvrir.svg') }}" alt="logo" style="height: 4rem;">
                     <h5 class="card-title pt-3 fw-bold text-nowrap">Ouvrir</h5>
                     <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p> 
                 </div>

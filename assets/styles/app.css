@@ -111,18 +111,33 @@ body {
 
   .head {
     color: #555555 !important;
-}
+  }
 
-.head.active,
-.head:hover {
-    color: black !important;
-    text-decoration: underline 0.2rem #007778 !important;
-}
+  .head.active,
+  .head:hover {
+      color: black !important;
+      text-decoration: underline 0.2rem #007778 !important;
+  }
 
-.greenhref {
-  color: #007778 !important;
-}
+  .greenhref {
+    color: #007778 !important;
+  }
 
-.containerff {
-  height: fit-content;
-}
+  .containerff {
+    height: fit-content;
+  }
+
+  .bkVert {
+    background-color: #0a2f30;
+    color: #eff5f3;
+  }
+  
+  .textVert {
+    color: #0a2f30;
+  }
+  .vide {
+    height: 18rem;
+  }
+  .borderR {
+    border-right: 5px dotted grey !important;
+  }

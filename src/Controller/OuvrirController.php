@@ -126,9 +126,19 @@ class OuvrirController extends AbstractController
         #[Route('/realisations', name: 'science_realiser')]
     
         public function realiser(Request $request){
-;
+
     
             return $this->render('science/realiser.html.twig', [
+
+            ]);
+        } 
+
+        #[Route('/entrepot', name: 'entrepot')]
+    
+        public function entrepot(Request $request){
+
+    
+            return $this->render('science/entrepot.html.twig', [
 
             ]);
         } 
