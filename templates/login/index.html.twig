@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Connexion | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+<div class="container p-lg-5 my-5">
+
+    <div >
+        <div class="m-5">
+            <h1 class="text-center pb-5 fw-bold">Connexion</h1>
+            <div class="row d-flex align-items-center">
+                
+                <div class="col-lg-6 col-sm-12 border-end p-4">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="mb-3">
+                        <label for="inputPassword" class=" col-form-label">Password</label>
+                        <input type="password" class="form-control" id="inputPassword">
+                    <p class="d-flex align-items-end flex-column mb-3"><a href="">Mot de passe oublié ?</a></p>
+                    </div>
+                    <div>
+                        <p>
+                            Pas encore de compte ? <a href="" class="greenhref"> <strong> M'inscrire </strong> </a>
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6 col-sm-12 p-4">
+                <div class=" d-grid gap-3">
+                    <a href="/login" target="_blank" class="btn btn-dark rounded-0 text-light" aria-label="Contactus">
+                        Se connecter avec CAS
+                    </a>
+                        
+                    <a href="/ddd" target="_blank" class="btn btn-dark rounded-0 text-light" aria-label="Contactus">
+                        Se connecter avec ORCID
+                    </a>
+                    <a href="/tt" target="_blank" class="btn btn-dark rounded-0 text-light" aria-label="Contactus">
+                        Se connecter avec HAL
+                    </a>
+                    
+                </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+{% endblock %}

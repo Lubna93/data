@@ -10,7 +10,7 @@
         width: 20rem;
         min-height: 16.5rem;
         box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
-        border-radius: 0.5rem;
+        border-radius: 0;
         margin: 1rem;
         transition: opacity 400ms;
     }
@@ -30,7 +30,7 @@
         width: 20rem;
         height: 10rem;
         object-fit: cover;
-        border-radius: 0.5rem 0.5rem 0 0;        
+        border-radius: 0;        
     }
 
     
@@ -98,14 +98,14 @@
             <div class="row">
                 <div class="col-auto">
                     <a href="{{ path('app_science') }}">
-                        <p class="btn btn-dark py-1 mr-1">TOUT</p>
+                        <p class="btn btn-dark py-1 mr-1 rounded-0">TOUT</p>
                     </a>
 
                     {% for tag1 in tags|sort %}
                     {% set route = app.request.attributes.get('_route_params') %}
 
                     <a  href={{ path('science_tag', {'slugtag' : tag1.id} ) }}>
-                            <p class="btn btn-outline-dark py-1 mr-1">
+                            <p class="btn btn-outline-dark py-1 mr-1 rounded-0">
                             {{ tag1.titret }}
                             </p>
                     </a> 
@@ -119,8 +119,8 @@
     <div class="row">
     {% for science in pager %}  
             <div class="col d-flex justify-content-center ">
-            <a href={{ path('science_show', {'id' : science.id}) }}> 
-                <div class="cart text-start">
+            <a href={{ path('science_show', {'id' : science.id}) }} > 
+                <div class="cart text-start ">
                     <div class="img1">
                         {% if science.image == true %}
                             <img class="img2" src="{{ asset(science.ImageUrl)|imagine_filter('squared_thumbnail_small') }}" alt="image">
@@ -131,10 +131,10 @@
                     <p class="fw-bold text-dark mt-3 mb-2 px-4">{{science.titre|length > 30 ? science.titre|slice(0, 30) ~ '…' : science.titre}}</p>
                     <div class="px-4">
                         {% for tag1 in science.Tag1|slice(0, 2) %}
-                            <p class="btn btn-outline-dark btn-sm py-0 mb-1">{{ tag1.titret }}</p>
+                            <p class="btn btn-outline-dark btn-sm py-0 mb-1 rounded-0">{{ tag1.titret }}</p>
                         {% endfor %}
                         {% if science.Tag1|length > 2 %}
-                            <p class="btn btn-outline-dark btn-sm py-0 mb-1">...</p>
+                            <p class="btn btn-outline-dark btn-sm py-0 mb-1 rounded-0">...</p>
                         {% endif %}
                     </div>
                     

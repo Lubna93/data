@@ -17,11 +17,11 @@
         <nav class="navbar container">
             <div class="container-fluid ">
                 <a class="navbar-brand" href="/">
-                    <img src="{{ asset('images/logo2.png') }}" alt=""  height="34" class="d-inline-block align-text-top">
+                    <img src="{{ asset('images/logo2.png') }}" alt=""  height="44" class="d-inline-block align-text-top">
                     
                 </a>
                 {% if not is_granted('ROLE_USER') %}
-                <a class="nav-link" href="/login"> <i class="fa-regular fa-circle-user fa-xl"></i></a>
+                <a class="nav-link" href="/loginform"> <i class="fa-regular fa-circle-user fa-xl"></i></a>
                 {% endif %}
                 {% if is_granted('ROLE_USER') %}
                 <a class="nav-link" href="/logout">Déconnexion <i class="fa-solid fa-right-from-bracket"></i></a>
@@ -52,32 +52,39 @@
         <section class="">
             <div class="container text-center text-md-start mt-4">
                 <!-- Grid row -->
-                <div class="row mt-3">
+                <div class="row mt-3 d-flex align-items-center">
                     <!-- Grid column -->
-                    <div class="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+                    <div class="col-md-4 pe-4 col-lg-4 col-xl-4 mx-auto mb-4">
 
-                        <div class="row">
+                        <div class="row border-end text-center">
 
-                            <div class="col-6 p-3">
+                            <div class="col-4 p-3 align-self-center">
                                 <a class="navbar-brand" href="https://www.univ-montp3.fr">
                                     <img src="{{ asset('images/01upvm.png') }}" alt="" height="55" class="d-inline-block align-text-top">
                                 </a>
                             </div>
-                            <div class="col-6 p-3">
-                                <a class="navbar-brand" href="/">
-                                    <img src="{{ asset('images/03oc.png') }}" alt="" height="55" class="d-inline-block align-text-top">
-                                </a>
-                            </div>
-                            <div class="col-6 p-3">
-                                <a class="navbar-brand" href="/">
-                                    <img src="{{ asset('images/02cper.png') }}" alt="" height="55" class="d-inline-block align-text-top">
-                                </a>
-                            </div>
-                            <div class="col-6 p-3">
+                            <div class="col-4 p-3 align-self-center">
                                 <a class="navbar-brand" href="/">
                                     <img src="{{ asset('images/04Tam.png') }}" alt="" height="55" class="d-inline-block align-text-top">
                                 </a>
                             </div>
+                            <div class="col-4 p-3 align-self-center">
+                                <a class="navbar-brand" href="/">
+                                    <img src="{{ asset('images/03oc.png') }}" alt="" height="55" class="d-inline-block align-text-top">
+                                </a>
+                            </div>
+                        <div class="px-5"><hr ></div>
+                        <div class="col-6 p-3 align-self-center">
+                            <a class="navbar-brand" href="/">
+                                <img src="{{ asset('images/05drari.png') }}" alt="" height="100" class="d-inline-block align-text-top">
+                            </a>
+                        </div>
+                            <div class="col-6 p-3 align-self-center">
+                                <a class="navbar-brand" href="/">
+                                    <img src="{{ asset('images/02cper.png') }}" alt="" height="45" class="d-inline-block align-text-top">
+                                </a>
+                            </div>
+
 
                         </div>
 
@@ -87,7 +94,9 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class=" col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                <div class="col">
+                <div class="row">
+                    <div class=" col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
                         <div class="row">
 
                             <div class="col">
@@ -98,25 +107,25 @@
                                 </p>
                                 <div>
 
-                                    <p class="my-2">
+                                    <p class="my-1">
                                         <a href="" target="_blank" class="text-reset">
                                             Conditions générales d'utilisation
                                                                                 
                                         </a>
                                     </p>
-                                    <p class="my-2">
+                                    <p class="my-1">
                                         <a href="" target="_blank" class="text-reset">
                                             Releases notes
                                                                                 
                                         </a>
                                     </p>
-                                    <p class="my-2">
+                                    <p class="my-1">
                                         <a href="" target="_blank" class="text-reset">
                                             Plan du site
                                                                                 
                                         </a>
                                     </p>
-                                    <p>
+                                    <p class="my-1">
                                         <a href="" target="_blank" class="text-reset">
                                             Gestion des cookies
                                                                                 
@@ -131,7 +140,7 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class=" col-md-3 col-lg-3 col-xl-3 mx-auto mb-4">
+                    <div class=" col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
                         <div class="row">
 
                             <div class="col">
@@ -142,19 +151,19 @@
                                 </p>
                                 <div >
 
-                                    <p class="my-2">
+                                    <p class="my-1">
                                         <a href="{{ path('app_apropos') }}" target="_blank" class="text-reset">
                                             Notre mission
                                                                                 
                                         </a>
                                     </p>
-                                    <p class=" my-2">
+                                    <p class=" my-1">
                                         <a href="{{ path('app_apropos') }}" target="_blank" class="text-reset">
                                             Notre vision
                                                                                 
                                         </a>
                                     </p>
-                                    <p class="my-2">
+                                    <p class="my-1">
                                         <a href="{{ path('app_apropos') }}" target="_blank" class="text-reset">
                                             Qui sommes-nous ?
                                                                                 
@@ -170,11 +179,11 @@
                     <!-- Grid column -->
 
                     <!-- Grid column -->
-                    <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-center">
+                    <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mb-4 text-center">
                         <!-- Links -->
                         <div class="footerP text-center pl-4">
-                            <a href="{{ path('app_contact') }}" target="_blank" class="m-1 link-secondary" aria-label="Contactus">
-                                <button type="button" class="btn btn-dark">
+                            <a href="mailto:nada.jonchere@univ-montp3.fr" target="_blank" class="m-1 link-secondary" aria-label="Contactus">
+                                <button type="button" class="btn btn-dark rounded-0">
                                     Nous contacter 
                                                                     
                                     <i class="fa-solid fa-square-arrow-up-right"></i>
@@ -184,16 +193,31 @@
                     </div>
 
                 <!-- Grid column -->
+                    <hr>
 
+                    <div class="col-12 mx-auto mb-4 text-center">
+                        <div class="footerP text-start pl-4">
+                            <p>
+                                Ce projet est une résultante d'un contrat de plan Etat-Région (CPER). Les CPER constituent un outil de développement entre l'État et les régions, par la mise en œuvre de projets structurants.
+                            <a href="https://www.ecologie.gouv.fr/politiques-publiques/contrats-plan-etat-region" class="greenhref">Plus d'Information sur les CPER →</a>
+                            </p>
+                        </div>
+                    </div>                    
+                <!-- Grid column -->
+                                
+                            </div>
+                        </div>
+<!-- rr -->
                 </div>
             </div>
+<!-- rr -->
         </section>
-
-        <hr class="container">
-
+<!-- rr -->
+        {# <hr class="container"> #}
+{# 
         <section>
 
-            <div class="d-flex mb-3 container">
+            <div class="d-flex mt-4 container">
                 <div class="me-auto ">
                     <p>
                     Sauf mention contraire. tous les contenus de ce site sont soud licence à définir | <a href="https://www.univ-montp3.fr" class="greenhref">Université Paul-Valéry Montpellier 3</a>
@@ -207,8 +231,26 @@
             </div>
             
 
-        </section>
+        </section> #}
+<!-- rr -->
+<hr class="container">
+        <section>
 
+            <div class="d-flex mt-4 container">
+                <div class="me-auto ">
+                    <p>
+                    Réalisé par le <a href="https://www.univ-montp3.fr/fr/node/180982" class="greenhref">Centre de Ressources Multimédia, Audiovisuel et Data (CReMAD)</a> - <a href="https://www.univ-montp3.fr" class="greenhref">Université Paul-Valéry Montpellier 3</a> 
+                    </p>
+                </div>
+                <div class="">
+                    <a class="navbar-brand" href="https://www.univ-montp3.fr">
+                        <img src="{{ asset('images/cremad_noir.png') }}" alt="" height="40" class="d-inline-block align-text-top">
+                    </a>
+                </div>
+            </div>
+            
+
+        </section>
     </footer>
 
     <!-- Footer -->

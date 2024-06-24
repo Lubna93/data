@@ -141,3 +141,7 @@ body {
   .borderR {
     border-right: 5px dotted grey !important;
   }
+
+  #bk {
+    width: 32rem;
+  }
