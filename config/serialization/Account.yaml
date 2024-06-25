@@ -1,0 +1,4 @@
+App\Entity\Account:
+    relations:
+        - rel: self
+          href: "@=href('api_users_show', {'id': object.getId()})"

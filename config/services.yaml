@@ -66,3 +66,9 @@ services:
         factory: ['@http_client', 'withOptions']
         arguments:
             - { base_uri: 'https://entrepot.recherche.data.gouv.fr/api/' }
+
+    App\Security\OrcidAuthenticator:
+        arguments:
+            $router: '@router'
+        tags:
+            - { name: 'security.authenticator' }
