@@ -143,4 +143,18 @@ class OuvrirController extends AbstractController
             ]);
         } 
 
+        #[Route('/ouvrir', name: 'flux_rss')]
+    
+        public function fluxrss(Request $request){
+            // $rssFileNews = 'https://coop-ist.cirad.fr/RSS/actualites.rss';
+            $rssFileNews = 'https://www.sciencesetavenir.fr/high-tech/rss.xml';           
+            // $rssFileNews = 'https://www.datacc.org/feed/';
+
+            $rss = simplexml_load_file($rssFileNews);
+    
+            return $this->render('science/fluxrss.html.twig', [
+                'rss' => $rss,
+            ]);
+        }
+
 }

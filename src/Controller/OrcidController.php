@@ -36,3 +36,4 @@ class OrcidController extends AbstractController
         return $this->redirectToRoute('index');
     }
 }
+

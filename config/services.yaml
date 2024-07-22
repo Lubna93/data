@@ -11,6 +11,14 @@ parameters:
     cas_path: '%env(string:CAS_PATH)%'
     cas_gateway: '%env(bool:CAS_GATEWAY)%'
 
+#2HAL
+    cas_login_target2: '%env(string:CAS_LOGIN_TARGET2)%'
+    cas_logout_target2: '%env(string:CAS_LOGIN_TARGET2)%'
+    cas_host2: '%env(string:CAS_HOST2)%'
+    cas_port2: '%env(int:CAS_PORT2)%'
+    cas_path2: '%env(string:CAS_PATH2)%'
+    cas_gateway2: '%env(bool:CAS_GATEWAY2)%'
+
 l3_cas_guard:
     host: '%env(string:CAS_HOST)%'
     path: '%env(string:CAS_PATH)%'

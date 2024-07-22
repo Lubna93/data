@@ -37,7 +37,7 @@
 
 		<div class="text-center">
 		{% if science.Image != null %}
-			<img class="imgR img-fluid" src="{{science.ImageUrl|imagine_filter('squared_thumbnail_grand')}}" alt="imageActualites">
+			<img class="imgR img-fluid" src="{{science.ImageUrl}}" alt="imageActualites">
 		{% endif %}
 			<p class="dateV">Publié le :{{science.createdat | date("d/m/Y")}}</p>
 		</div>

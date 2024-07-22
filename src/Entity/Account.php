@@ -19,7 +19,7 @@ use Symfony\Component\Validator\Constraints as Assert;
     denormalizationContext: ['groups' => ['user:write']],
 )]
 #[UniqueEntity(fields: ['email'], message: 'There is already an account with this email')]
-#[UniqueEntity(fields: ['username'], message: 'It looks like another user took your username!')]
+#[UniqueEntity(fields: ['uid'], message: 'It looks like another user took your username!')]
 
 class Account implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -129,6 +129,17 @@ class Account implements UserInterface, PasswordAuthenticatedUserInterface
     public function setEmail(string $email): static
     {
         $this->email = $email;
+
+        return $this;
+    }
+    public function getIsVerified(): ?bool
+    {
+        return $this->isVerified;
+    }
+    
+    public function setIsVerified(bool $isVerified): self
+    {
+        $this->isVerified = $isVerified;
 
         return $this;
     }

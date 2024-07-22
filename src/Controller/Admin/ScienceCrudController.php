@@ -68,6 +68,7 @@ class ScienceCrudController extends AbstractCrudController
             ->add('titre')
             ->add('published')
             ->add('createdat')
+            ->add('Tag1')
             ;
     }
 

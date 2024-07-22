@@ -1,5 +1,5 @@
 <?php
-// src/Security/OrcidAuthenticator.php
+
 namespace App\Security;
 
 use Symfony\Component\HttpFoundation\Request;

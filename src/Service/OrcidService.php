@@ -25,8 +25,8 @@ class OrcidService
             'response_type' => 'code',
             'scope' => '/authenticate',
             'redirect_uri' => 'http://127.0.0.1:8000',
-            // 'redirect_uri' => 'http://127.0.0.1:8000',
-            'redirect_uri' => 'https://www.ch.b114.fr',
+            'redirect_uri' => 'http://127.0.0.1:8000',
+            //'redirect_uri' => 'https://www.ch.b114.fr',
         ];
         $url = $baseUri . '?' . http_build_query($queryParams);
 
@@ -42,8 +42,8 @@ class OrcidService
                 'grant_type' => 'authorization_code',
                 'client_id' => 'APP-COWCB05BE2SBGHJ3',
                 'client_secret' => '07aafe65-88a1-4832-b08c-8cd762d93e92',
-                // 'redirect_uri' => 'http://127.0.0.1:8000',
-                'redirect_uri' => 'https://www.ch.b114.fr',
+                'redirect_uri' => 'http://127.0.0.1:8000',
+                //'redirect_uri' => 'https://www.ch.b114.fr',
                 'code' => $code,
             ],
         ];

@@ -37,11 +37,12 @@
 <!-- Search Bar -->
 <div class="row px-lg-5 mx-lg-3 px-md-2 mx-md-2 px-sm-1 mx-sm-0">
     <div class="col-12">
-        <form >
+
+        <form action="{{ path('search_datasets') }}" method="get">
             <div class="input-group mb-3 border border-black border-3">
-                <input type="text" class="form-control rounded-0 p-3" placeholder="Rechercher un jeu de données..." aria-label="Search" aria-describedby="basic-addon2" >
+                <input type="text" name="query" value="{{ query|default('') }}" class="form-control rounded-0 p-3" placeholder="Rechercher un jeu de données..." aria-label="Search" aria-describedby="basic-addon2" >
                 <div class="input-group-append ">
-                    <button class="btn btn-dark rounded-0 p-3" type="button"><i class="fas fa-search"></i> Rechercher</button>
+                    <button class="btn btn-dark rounded-0 p-3" type="submit"><i class="fas fa-search"></i> Rechercher</button>
                 </div>
             </div>
         </form>
@@ -86,7 +87,7 @@
     </div>
 
     <div class="col d-flex justify-content-center p-3 p-md-4">
-        <a href="{{ path('app_science') }}" target="_blank">
+        <a href="{{ path('flux_rss') }}" target="_blank">
             <div class="card bg-light text-center border border-black rounded-0 borderShadow py-0 px-4" id="bk">
                 <div class="card-body px-5 px-md-2 px-sm-1">
                     <div><img src="{{ asset('images/accueil/3points.png') }}" alt="logo" style="height: 0.4rem;"></div>

@@ -15,6 +15,13 @@ class DefaultController extends AbstractController
         $url = 'https://'.$this->getParameter('cas_host') . ((($this->getParameter('cas_port')!=80) || ($this->getParameter('cas_port')!=443)) ? ":".$this->getParameter('cas_port') : "") . $this->getParameter('cas_path') . '/login?service=';
         return $this->redirect($url . $target);
     }
+
+    #[Route('/login2', name: 'login2')]
+    public function login2(Request $request) {
+        $target = urlencode($this->getParameter('cas_login_target2').'/force');
+        $url = 'https://'.$this->getParameter('cas_host2') . ((($this->getParameter('cas_port2')!=80) || ($this->getParameter('cas_port2')!=443)) ? ":".$this->getParameter('cas_port2') : "") . $this->getParameter('cas_path2') . '/login?service=';
+        return $this->redirect($url . $target);
+    }
     
     #[Route('/logout', name: 'logout')]
     public function logout(Request $request) {

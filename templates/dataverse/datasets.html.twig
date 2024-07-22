@@ -4,38 +4,61 @@
 
 {% block body %}
 <style>
-
+    .cart {
+        background-color: var(--grayb);
+        width: 23rem;
+        min-height: 20rem;
+        box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
+        border-radius: 0;
+        margin: 1rem;
+        transition: opacity 400ms;
+        color: black;
+    }
+    .cart:hover {
+        box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+        transform: translateY(-1px);
+	    opacity:0.7;
+    }
 </style>
 <div class="container mt-5 px-5">
     <div class="row">
+
+        <div class="col-12">
+            <form action="{{ path('search_datasets') }}" method="get">
+            <div class="input-group mb-3 border border-black border-3">
+                <input type="text" name="query" value="{{ query|default('') }}" class="form-control rounded-0 p-3" placeholder="Rechercher un jeu de données..." aria-label="Search" aria-describedby="basic-addon2" >
+                <div class="input-group-append ">
+                    <button class="btn btn-dark rounded-0 p-3" type="submit"><i class="fas fa-search"></i> Rechercher</button>
+                </div>
+            </div>
+            </form>
+        </div>
+
         <div class="col-12 text-center">
-             <h1 class="fw-bold pb-4">Latest Datasets</h1>
+             <h1 class="fw-bold pb-4">Les résultats de "{{ query|default('cnrs') }}"</h1>
         </div>
     </div>
 </div>
 
 <section class="container px-4">
-
-<ul>
-    {% for dataset in datasets %}
-        <li>
-            <h2><a href="{{ dataset.url }}" target="_blank">{{ dataset.name }}</a></h2>
-            <p>Description: {{ dataset.description }}</p>
-            {# <p>Published At: {{ dataset.published_at }}</p> #}
-            <p><strong>Publisher:</strong> {{ dataset.publisher }}</p>
-            {# <p>Global ID: {{ dataset.global_id }}</p> #}
-            {# <p>Identifier of Dataverse: {{ dataset.identifier_of_dataverse }}</p> #}
-            {# <p>Name of Dataverse: {{ dataset.name_of_dataverse }}</p> #}
-            {# <p>Storage Identifier: {{ dataset.storageIdentifier }}</p> #}
-            {# <p>File Count: {{ dataset.fileCount }}</p> #}
-            {# <p>Version ID: {{ dataset.versionId }}</p> #}
-            {# <p>Version State: {{ dataset.versionState }}</p> #}
-            <p><strong>Created At:</strong> {{ dataset.createdAt }}</p>
-            {# <p>Updated At: {{ dataset.updatedAt }}</p> #}
-        </li>
-    {% endfor %}
-</ul>
-
+    <div class="row ">
+        {% for dataset in datasets %}
+            <div class="col d-flex justify-content-center ">
+                <a href="{{ dataset.url|default('') }}" target="_blank">
+                    <div class="cart p-4">
+                        <p class="headvert"><strong>{{ dataset.name }}</strong></p>
+                        
+                        <p ><i class="fa-solid fa-newspaper"></i><small> {{ dataset.description|length > 100 ? dataset.description|slice(0, 100) ~ '……' : dataset.description}}</small></p>
+                        <p><i class="fa-solid fa-chalkboard-user"></i> {{ dataset.publisher }}</p>
+                        <p class="text-dark">
+                                <i class="fa-regular fa-calendar-days"></i>
+                                {{ dataset.createdAt|date("d/m/Y")}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 </section>
 
 <br>

@@ -40,8 +40,8 @@
 
         <div class="row d-flex justify-content-evenly pt-4 mx-3">
             <div class="col-md-auto">
-                <a href={{ path('app_science') }}
-                class="h3 head {{ app.request.get('_route') == 'app_science' or app.request.get('_route') == 'science_tag' ? 'active' }}">                   
+                <a href={{ path('flux_rss') }}
+                class="h3 head {{ app.request.get('_route') == 'flux_rss' ? 'active' }}">                   
                         PaulVa data                   
                 </a>
             </div>
@@ -123,8 +123,10 @@
                 <div class="cart text-start ">
                     <div class="img1">
                         {% if science.image == true %}
-                            <img class="img2" src="{{ asset(science.ImageUrl)|imagine_filter('squared_thumbnail_small') }}" alt="image">
-                        {% else %}
+                            {# <img class="img2" src="{{ asset(science.ImageUrl)|imagine_filter('squared_thumbnail_small') }}" alt="image"> #}
+                            <img class="img2" src="{{ asset(science.ImageUrl) }}" alt="image">
+
+                            {% else %}
                             <img class="img2" src="" alt="">
                         {% endif %}
                     </div>

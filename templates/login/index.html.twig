@@ -12,9 +12,9 @@
     <div >
         <div class="m-5">
             <h1 class="text-center pb-5 fw-bold">Connexion</h1>
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center justify-content-center">
                 
-                <div class="col-lg-6 col-sm-12 border-end p-4">
+                {# <div class="col-lg-6 col-sm-12 border-end p-4">
                     <div class="mb-3">
                         <label for="exampleFormControlInput1" class="form-label">Email address</label>
                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -45,8 +45,25 @@
                     </a>
                     
                 </div>
+                </div> #}
+                <div class=" d-grid gap-3 col-lg-6">
+                    <a href="/login" target="_blank" class="btn btn-dark rounded-0 text-light" aria-label="Contactus">
+                        Connexion par l'ENT
+                        <span data-toggle="tooltip" data-placement="right" title="Connectez-vous par votre compte CAS de l'UPVM">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
+                        
+                    <a href="/connect/orcid" target="_blank" class="btn btn-dark rounded-0 text-light" aria-label="Contactus">
+                        Connexion par ORCID
+                        <span data-toggle="tooltip" data-placement="right" title="Connectez-vous par votre compte ORCID">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
+                    <a href="/login2" target="_blank" class="btn btn-dark rounded-0 text-light" aria-label="Contactus">
+                        Connexion par HAL
+                        <span data-toggle="tooltip" data-placement="right" title="Connectez-vous via votre compte HAL">
+                        <i class="fa fa-info-circle"></i>
+                    </a>
                 </div>
-
             </div>
             
         </div>
