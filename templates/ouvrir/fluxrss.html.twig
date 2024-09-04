@@ -7,7 +7,7 @@
     .cart {
         background-color: white;
         width: 20rem;
-        height: 16rem; /* Fixed height */
+        height: 11rem; /* Fixed height */
         box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
         border-radius: 0;
         margin: 1rem;
@@ -16,6 +16,7 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between; /* Ensure elements are spaced evenly */
+        padding: 5%;
     }
 
     .cart:hover {
@@ -25,8 +26,8 @@
     }
 
     .titreActu {
-        padding: 0.5rem;
-        font-size: 0.9rem;
+        padding: 0.3rem;
+        font-size: 1rem;
         font-weight: bold;
         color: black;
         height: 3rem; /* Fixed height for the title */
@@ -69,7 +70,7 @@
     <section>
         <div class="row d-flex justify-content-evenly pt-4 mx-3">
             <div class="col-md-auto">
-                <a href="{{ path('flux_rss') }}" class="h3 head {{ app.request.get('_route') == 'flux_rss' ? 'active' }}">
+                <a href="{{ path('ouvrir') }}" class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">
                     PaulVa data
                 </a>
             </div>
@@ -80,19 +81,19 @@
             </div>
             <div class="col-md-auto">
                 <a href="{{ path('entrepot') }}" class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}">
-                    Entrepôt
+                    Outils
                 </a>
             </div>
             <div class="col-md-auto">
-                <a href="{{ path('science_rss') }}" class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}">
-                    Vielle
+                <a href="{{ path('actualites_rss1') }}" class=" h3 head {{ app.request.get('_route') == 'actualites_rss1' ? 'active' }}">
+                    Veille
                 </a>
             </div>
         </div>
         <hr>
     </section>
 
-    <div class="text-center">
+    {# <div class="text-center">
         <section>
             <div class="row">
                 {% for item in rss.channel.item|slice(0, 30) %}
@@ -100,32 +101,32 @@
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart">
                                 <p class="titreActu">{{ item.title }}</p>
+
+                                <div class="text-dark">
+                                    <small>
+                                        <i class="fa-solid fa-tags" style="color: #007778;"></i>
+                                        {% if item.category is iterable %}
+                                            {{ item.category|join(', ') }}
+                                        {% else %}
+                                            {{ item.category }}
+                                        {% endif %}
+                                    </small>
+                                </div>
+
                                 <div class="text-dark pb-0 mb-0">
                                     <small>
                                         <i class="fa-solid fa-calendar" style="color: #007778;"></i>
                                         {{ item.pubDate|date("d/m/Y") }}
                                     </small>
                                 </div>
-                                <div class="text-dark">
-                                    <small>
-                                        <i class="fa-solid fa-tags" style="color: #007778;"></i>
-                                        {{ item.category }}
-                                    </small>
-                                </div>
-                                <div class="img-container">
-                                    {% if item.enclosure and item.enclosure.attributes().url %}
-                                        <img class="img2" src="{{ item.enclosure.attributes().url }}" alt="image">
-                                    {% else %}
-                                        <img class="img2" src="" alt="">
-                                    {% endif %}
-                                </div>
+
                             </div>
                         </a>
                     </div>
                 {% endfor %}
             </div>
         </section>
-    </div>
+    </div> #}
 
     <br>
 </div>

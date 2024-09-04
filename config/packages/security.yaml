@@ -25,50 +25,33 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-
-        l3_firewall:
-            pattern: ^/
-            provider: chain_provider
-            security: true
-            custom_authenticators:
-                - cas.security.authentication.authenticator
-            logout:
-                path: /logout
-
-        l3_firewall2:
-            pattern: ^/
-            provider: chain_provider
-            security: true
-            custom_authenticators:
-                - cas.security.authentication.authenticator
-            logout:
-                path: /logout
-
         main:
             pattern: ^/
             security: true
             lazy: true
             provider: chain_provider
             custom_authenticators:
-                - cas.security.authentication.authenticator
-
-        login:
-            pattern: ^/api/login_check
-            stateless: true
-            provider: app_user_provider
-            json_login:
-                check_path: /api/login_check
-                success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure
-                username_path: email
-                password_path: password
-
-        api:
-            pattern: ^/api
-            stateless: true
-            provider: app_user_provider
+                - App\Security\ChainedAuthenticator         
+            logout:
+                path: /logout                            
+                           
+        cas:
+            pattern: ^/cas/
+            provider: chain_provider
+            security: true
             custom_authenticators:
-                - lexik_jwt_authentication.jwt_manager
+                - cas.security.authentication.authenticator
+            logout:
+                path: /logout
+
+        casc:
+            pattern: ^/casc
+            provider: chain_provider
+            security: true
+            custom_authenticators:
+                - casc.security.authentication.authenticator
+            logout:
+                path: /logout2
 
         orcid:
             pattern: ^/connect/orcid
@@ -76,6 +59,36 @@ security:
             provider: app_user_provider
             custom_authenticators:
                 - App\Security\OrcidAuthenticator
+
+        # main:
+        #     pattern: ^/
+        #     security: true
+        #     lazy: true
+        #     provider: chain_provider
+        #     custom_authenticators:
+        #         - casc.security.authentication.authenticator
+        #     logout:
+        #         path: /logout
+
+        # login:
+        #     pattern: ^/api/login_check
+        #     stateless: true
+        #     provider: app_user_provider
+        #     json_login:
+        #         check_path: /api/login_check
+        #         success_handler: lexik_jwt_authentication.handler.authentication_success
+        #         failure_handler: lexik_jwt_authentication.handler.authentication_failure
+        #         username_path: email
+        #         password_path: password
+
+        # api:
+        #     pattern: ^/api
+        #     stateless: true
+        #     provider: app_user_provider
+        #     custom_authenticators:
+        #         - lexik_jwt_authentication.jwt_manager
+
+
 
     access_control:
         # - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }

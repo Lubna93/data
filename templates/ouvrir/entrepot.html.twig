@@ -16,8 +16,8 @@
 
 	<div class="row d-flex justify-content-evenly pt-4 mx-3">
 		<div class="col-md-auto">
-			<a href={{ path('flux_rss') }}
-			class="h3 head {{ app.request.get('_route') == 'flux_rss' ? 'active' }}">                   
+			<a href={{ path('ouvrir') }}
+			class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">                   
 					PaulVa data                   
 			</a>
 		</div>
@@ -30,13 +30,13 @@
 		<div class="col-md-auto">
 			<a href={{ path('entrepot') }}
 			class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}"> 
-					Entrepôt
+					Outils
 			</a>
 		</div>
 		<div class="col-md-auto">
-			<a href={{ path('science_rss') }}
-			class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}"> 
-					Vielle
+			<a href={{ path('actualites_rss1') }}
+			class=" h3 head {{ app.request.get('_route') == 'actualites_rss1' ? 'active' }}"> 
+					Veille
 			</a>
 		</div>
 	</div>
@@ -47,8 +47,8 @@
 
 <section class="">
 
-<h1 class="fw-bold text-uppercase fs-1 py-3 px-5"> Lorem ipsum dolor sit amet</h1>
-<p class="px-5">labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+{# <h1 class="fw-bold text-uppercase fs-1 py-3 px-5"> Lorem ipsum dolor sit amet</h1>
+<p class="px-5">labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> #}
 
 
 	<div class="col d-flex justify-content-center p-3 p-md-4">
@@ -56,7 +56,7 @@
 			<div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
 				<div class="card-body px-5 px-md-2 px-sm-1">
 					<img class="imgp" src="{{ asset('images/entrepot/nakala.png') }}" alt="logo">
-					<p class="pt-2 text-black-50">Un entrepôt de données dont le but est de préserver et de disséminer les données produites.</p> 
+					<p class="pt-2 text-black-50">Un Outils de données dont le but est de préserver et de disséminer les données produites.</p> 
 				</div>
 			</div>
 		</a>

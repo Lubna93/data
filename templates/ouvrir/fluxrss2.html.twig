@@ -1,14 +1,14 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Sciences | UPVM3{% endblock %}
+{% block title %}Veille | UPVM3{% endblock %}
 
 {% block body %}
 <style>
     .cart {
         background-color: white;
         width: 20rem;
-        min-height: 7rem; /* Set a minimum height */
-        box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
+        height: 11rem; /* Fixed height */
+        box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
         border-radius: 0;
         margin: 1rem;
         transition: opacity 400ms, transform 0.3s;
@@ -16,60 +16,17 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between; /* Ensure elements are spaced evenly */
+        padding: 7%;
     }
 
-    .cart:hover {
-        box-shadow: 0 5px 35px 0px rgba(0, 0, 0, 0.1);
-        transform: translateY(-5px); /* Slightly raise on hover */
-        opacity: 0.9;
-    }
 
-    .titreActu {
-        padding: 0.5rem;
-        font-size: 0.9rem;
-        font-weight: bold;
-        color: black;
-        height: 3rem; /* Fixed height for the title */
-        overflow: hidden; /* Hide overflow text */
-    }
-
-    .img-container {
-        width: 100%;
-        height: 10rem; /* Fixed height for the image */
-        overflow: hidden; /* Hide overflow image */
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .img2 {
-        width: 100%;
-        height: 100%;
-        object-fit: cover; /* Ensure the image covers the container */
-    }
-
-    .text-dark {
-        padding: 0.5rem;
-        font-size: 0.8rem;
-        color: black;
-    }
-
-    .fa-calendar {
-        margin-right: 0.5rem;
-    }
-
-    .dateN {
-        font-size: 0.8rem;
-        color: black;
-        text-align: center;
-    }
 </style>
 
 <div class="container mt-5 px-3">
     <section>
         <div class="row d-flex justify-content-evenly pt-4 mx-3">
             <div class="col-md-auto">
-                <a href="{{ path('flux_rss') }}" class="h3 head {{ app.request.get('_route') == 'flux_rss' ? 'active' }}">
+                <a href="{{ path('ouvrir') }}" class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">
                     PaulVa data
                 </a>
             </div>
@@ -80,12 +37,11 @@
             </div>
             <div class="col-md-auto">
                 <a href="{{ path('entrepot') }}" class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}">
-                    Entrepôt
+                    Outils
                 </a>
             </div>
             <div class="col-md-auto">
-                <a href="{{ path('science_rss') }}" class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}">
-                    Vielle
+                <a href="{{ path('actualites_rss1') }}" class=" h3 head {{ (app.request.get('_route') == 'actualites_rss1' or app.request.get('_route') == 'actualites_rss2' or app.request.get('_route') == 'actualites_rss3' or app.request.get('_route') == 'actualites_rss4') ? 'active' }}">                Veille
                 </a>
             </div>
         </div>
@@ -100,7 +56,15 @@
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart">
                                 <p class="titreActu">{{ item.title }}</p>
-                                <div class="text-dark ">
+
+                                <div class="text-dark">
+                                    <small>
+                                            {# {{ item.description|join(', ')|slice(0, 70) }} #}
+                                            {{ item.description|join(', ')|length > 80 ? item.description|join(', ')|slice(0, 80) ~ '…' : item.description }}
+                                    </small>
+                                </div>
+
+                                <div class="text-dark pb-0 mb-0">
                                     <small>
                                         <i class="fa-solid fa-calendar" style="color: #007778;"></i>
                                         {{ item.pubDate|date("d/m/Y") }}

@@ -40,8 +40,8 @@
 
         <div class="row d-flex justify-content-evenly pt-4 mx-3">
             <div class="col-md-auto">
-                <a href={{ path('flux_rss') }}
-                class="h3 head {{ app.request.get('_route') == 'flux_rss' ? 'active' }}">                   
+                <a href={{ path('ouvrir') }}
+                class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">                   
                         PaulVa data                   
                 </a>
             </div>
@@ -54,13 +54,13 @@
             <div class="col-md-auto">
                 <a href={{ path('entrepot') }}
                 class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}"> 
-                        Entrepôt
+                        Outils
                 </a>
             </div>
             <div class="col-md-auto">
-                <a href={{ path('science_rss') }}
-                class=" h3 head {{ app.request.get('_route') == 'science_rss' ? 'active' }}"> 
-                        Vielle
+                <a href={{ path('actualites_rss1') }}
+                class=" h3 head {{ app.request.get('_route') == 'actualites_rss1' ? 'active' }}"> 
+                        Veille
                 </a>
             </div>
 

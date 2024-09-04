@@ -22,4 +22,9 @@ return [
     ApiPlatform\Symfony\Bundle\ApiPlatformBundle::class => ['all' => true],
     Lexik\Bundle\JWTAuthenticationBundle\LexikJWTAuthenticationBundle::class => ['all' => true],
     SymfonyCasts\Bundle\VerifyEmail\SymfonyCastsVerifyEmailBundle::class => ['all' => true],
+    App\lib\CasCuardBundle\L3CasCuardBundle::class => ['all' => true],
+    // L3\Bundle\CasCuardBundle\L3CasCuardBundle::class => ['all' => true],
+    // KnpU\LoremIpsumBundle\KnpULoremIpsumBundle::class => ['all' => true],
+    // KnpU\LoremIpsumBundle\KnpULoremIpsumBundle::class => ['all' => true],
+    // Acme\BlogBundle\AcmeBlogBundle::class => ['dev' => true],
 ];

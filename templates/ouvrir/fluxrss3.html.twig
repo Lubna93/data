@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veille | UPVM3{% endblock %}
+
+{% block body %}
+<style>
+    .cart {
+        background-color: white;
+        width: 20rem;
+        height: 12rem; /* Fixed height */
+        box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
+        border-radius: 0;
+        margin: 1rem;
+        transition: opacity 400ms, transform 0.3s;
+        overflow: hidden; /* Prevent overflow of content */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ensure elements are spaced evenly */
+        padding: 7%;
+    }
+
+</style>
+
+<div class="container mt-5 px-3">
+    <section>
+        <div class="row d-flex justify-content-evenly pt-4 mx-3">
+            <div class="col-md-auto">
+                <a href="{{ path('ouvrir') }}" class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">
+                    PaulVa data
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path('science_realiser') }}" class=" h3 head {{ app.request.get('_route') == 'science_realiser' ? 'active' }}">
+                    PaulVa Réalisations
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path('entrepot') }}" class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}">
+                    Outils
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path('actualites_rss1') }}" class=" h3 head {{ app.request.get('_route') == 'actualites_rss1' or app.request.get('_route') == 'actualites_rss2' or app.request.get('_route') == 'actualites_rss3' or app.request.get('_route') == 'actualites_rss4' ? 'active' }}">
+                    Veille
+                </a>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <div class="text-center">
+        <section>
+            <div class="row">
+                {% for item in rss.channel.item|slice(0, 30) %}
+                    <div class="col d-flex justify-content-center align-items-reverse">
+                        <a href="{{ item.link|default('') }}" target="_blank">
+                            <div class="cart">
+                                <p class="titreActu">{{ item.title }}</p>
+
+                                <div class="text-dark text-start pb-2">
+                                    <small class="text">
+                                            {{ item.description|join(', ')|length > 80 ? item.description|join(', ')|slice(0, 80) ~ '…' : item.description }}
+                                    </small>
+                                </div>
+
+                                <div class="text-dark">
+                                    <small class="text">
+                                        <i class="fa-solid fa-tags" style="color: #007778;"></i>
+                                        {% if item.category is iterable %}
+                                            {{ item.category|join(', ') }}
+                                        {% else %}
+                                            {{ item.category }}
+                                        {% endif %}
+                                    </small>
+                                </div>
+
+
+                                <div class="text-dark pb-0 mb-0 text">
+                                    <small>
+                                        <i class="fa-solid fa-calendar" style="color: #007778;"></i>
+                                        {{ item.pubDate|date("d/m/Y") }}
+                                    </small>
+                                </div>
+
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+    </div>
+
+    <br>
+</div>
+{% endblock %}

@@ -1,0 +1,22 @@
+{
+    "name": "l3/cas-cuard-bundle",
+    "type": "symfony-bundle",
+    "description": "PHPCas wrapper for Symfony3, Symfony4, Symfony5, Symfony6",
+    "homepage": "https://github.com/l3-team/CasGuardBundle",
+    "license": "LGPL-3.0-or-later",
+    "authors": [
+	{
+            "name": "Mathieu Hétru",
+            "email": "mathieu.hetru@univ-lille.fr"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.2",
+        "apereo/phpcas": "1.3.8",
+        "symfony/security-bundle": "~6.0",
+        "symfony/framework-bundle": "~6.0"
+    },
+
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}

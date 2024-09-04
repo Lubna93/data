@@ -21,6 +21,7 @@
         "l3/cas-guard-bundle": "~1.0",
         "l3/uid-user-bundle": "~1.0",
         "league/commonmark": "^2.4",
+        "league/html-to-markdown": "^5.1",
         "league/oauth2-client": "^2.7",
         "lexik/jwt-authentication-bundle": "^3.0",
         "liip/imagine-bundle": "^2.12",
@@ -75,12 +76,15 @@
     },
     "autoload": {
         "psr-4": {
+            "KnpU\\LoremIpsumBundle\\": "lib/LoremIpsumBundle/src/",
+            "L3\\Bundle\\CasCuardBundle\\": "lib/CasCuardBundle/",
             "App\\": "src/"
+            
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "App\\Tests\\": "tests/"
+            "App\\Tests\\": "tests/"  
         }
     },
     "replace": {

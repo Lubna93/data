@@ -33,7 +33,7 @@ class OrcidController extends AbstractController
         // Store token or use it to fetch user data
         // Example: $accessToken = $token['access_token'];
 
-        return $this->redirectToRoute('index');
+        return $this->redirectToRoute('app_traiter');
     }
 }
 
