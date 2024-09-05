@@ -1,0 +1,151 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Veille | UPVM3{% endblock %}
+
+{% block body %}
+<style>
+    .cart {
+        background-color: white;
+        width: 20rem;
+        min-height: 6rem; /* Set a minimum height */
+        box-shadow: 0 4px 8px 1px rgba(0, 0, 0, 0.2);
+        border-radius: 0;
+        margin: 1rem;
+        transition: opacity 400ms, transform 0.3s;
+        overflow: hidden; /* Prevent overflow of content */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between; /* Ensure elements are spaced evenly */
+        padding: 5%;
+    }
+
+    .hrv {
+        margin:auto;
+        width: 20%;
+        border: 0;
+        height: 1px;
+        margin-bottom: 1rem;
+        background-image: linear-gradient(to right,rgba(255, 255, 255, 0.75) , rgba(255, 255, 255, 0) , rgba(255, 255, 255, 0.75));
+    }
+
+</style>
+
+<div class="container mt-5 px-3">
+    <section>
+        <div class="row d-flex justify-content-evenly pt-4 mx-3">
+            <div class="col-md-auto">
+                <a href="{{ path('ouvrir') }}" class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">
+                    PaulVa data
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path('science_realiser') }}" class=" h3 head {{ app.request.get('_route') == 'science_realiser' ? 'active' }}">
+                    PaulVa Réalisations
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path('entrepot') }}" class=" h3 head {{ app.request.get('_route') == 'entrepot' ? 'active' }}">
+                    Outils
+                </a>
+            </div>
+            <div class="col-md-auto">
+                <a href="{{ path('actualites_rss') }}" class=" h3 head {{ (app.request.get('_route') == 'actualites_rss' or app.request.get('_route') == 'actualites_rss1' or app.request.get('_route') == 'actualites_rss2' or app.request.get('_route') == 'actualites_rss3' or app.request.get('_route') == 'actualites_rss4') ? 'active' }}">               
+                   Veille
+                </a>
+            </div>
+        </div>
+        <hr>
+    </section>
+
+    <div class="text-center">
+        <section>
+            <div class="row">
+                {% for item in rss.channel.item|slice(0, 3) %}
+                    <div class="col d-flex justify-content-center align-items-reverse">
+                        <a href="{{ item.link|default('') }}" target="_blank">
+                            <div class="cart ">
+                                <p class="titreActu">{{ item.title }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+                <div class="px-5 mb-3 text-end fw-bold">
+                    <a class="px-2 fw-bold" href="{{ path('actualites_rss1') }}">
+                        En savoir plus  <i class="fa-solid fa-angles-right"></i>
+                    </a>               
+                </div>
+
+            </div>
+            <hr class="hrv">
+
+            <div class="row">
+                {% for item in rss2.channel.item|slice(0, 3) %}
+                    <div class="col d-flex justify-content-center align-items-reverse">
+                        <a href="{{ item.link|default('') }}" target="_blank">
+                            <div class="cart ">
+                                <p class="titreActu">{{ item.title }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+                <div class="px-5 mb-3 text-end fw-bold">
+                    <a class="px-2 fw-bold" href="{{ path('actualites_rss2') }}">
+                        En savoir plus  <i class="fa-solid fa-angles-right"></i>
+                    </a>               
+                </div>
+
+            </div>
+
+            <hr class="hrv">
+
+            <div class="row">
+                {% for item in rss3.channel.item|slice(0, 3) %}
+                    <div class="col d-flex justify-content-center align-items-reverse">
+                        <a href="{{ item.link|default('') }}" target="_blank">
+                            <div class="cart ">
+                                <p class="titreActu">{{ item.title }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+                <div class="px-5 mb-3 text-end fw-bold">
+                    <a class="px-2 fw-bold" href="{{ path('actualites_rss3') }}">
+                        En savoir plus  <i class="fa-solid fa-angles-right"></i>
+                    </a>               
+                </div>
+
+            </div>
+
+            <hr class="hrv">
+
+            <div class="row">
+                {% for item in rss4.item|slice(0, 3) %}
+                    <div class="col d-flex justify-content-center align-items-reverse">
+                        <a href="{{ item.link|default('') }}" target="_blank">
+                            <div class="cart ">
+                                <p class="titreActu">{{ item.title }}</p>
+                            </div>
+                        </a>
+                    </div>
+                {% endfor %}
+
+                <div class="px-5 mb-3 text-end fw-bold">
+                    <a class="px-2 fw-bold" href="{{ path('actualites_rss4') }}">
+                        En savoir plus  <i class="fa-solid fa-angles-right"></i>
+                    </a>               
+                </div>
+
+            </div>
+
+
+
+            
+        </section>
+    </div>
+
+    <br>
+</div>
+{% endblock %}

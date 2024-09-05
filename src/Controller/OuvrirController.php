@@ -141,12 +141,31 @@ class OuvrirController extends AbstractController
             ]);
         }
 
-        #[Route('/veille1', name: 'actualites_rss1')]
+        #[Route('/veille', name: 'actualites_rss')]
     
         public function viewRSSAAction(Request $request){
             $rssFileNews = 'https://www.didaktic.fr/feed';
+            $rssFileNews2 = 'https://coop-ist.cirad.fr/RSS/actualites.rss';
+            $rssFileNews3 = 'https://www.inserm.fr/feed/';
+            $rssFileNews4 = 'http://journals.openedition.org/revuehn/backend?format=rssdocuments';
 
-            $rssFileAgenda = 'https://www.univ-montp3.fr/fr/agenda/1/all/rss.xml';
+            $rss = simplexml_load_file($rssFileNews);
+            $rss2 = simplexml_load_file($rssFileNews2);
+            $rss3 = simplexml_load_file($rssFileNews3);
+            $rss4 = simplexml_load_file($rssFileNews4);
+    
+            return $this->render('ouvrir/veille.html.twig', [
+                'rss' => $rss,
+                'rss2' => $rss2,
+                'rss3' => $rss3,
+                'rss4' => $rss4,
+            ]);
+        }
+
+        #[Route('/veille1', name: 'actualites_rss1')]
+    
+        public function fluxrss1(Request $request){
+            $rssFileNews = 'https://www.didaktic.fr/feed';
             
             $rss = simplexml_load_file($rssFileNews);
     
@@ -161,7 +180,6 @@ class OuvrirController extends AbstractController
             $rssFileNews = 'https://coop-ist.cirad.fr/RSS/actualites.rss';       
 
             $rss = simplexml_load_file($rssFileNews);
-            // dump($rss);
     
             return $this->render('ouvrir/fluxrss2.html.twig', [
                 'rss' => $rss,
