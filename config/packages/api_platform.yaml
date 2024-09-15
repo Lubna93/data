@@ -1,5 +1,5 @@
 api_platform:
-    title: Hey!
+    title: Corpus Humanum
     version: 1.0.0
     formats:
         jsonld: ['application/ld+json']

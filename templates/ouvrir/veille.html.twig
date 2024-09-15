@@ -28,6 +28,19 @@
         background-image: linear-gradient(to right,rgba(255, 255, 255, 0.75) , rgba(255, 255, 255, 0) , rgba(255, 255, 255, 0.75));
     }
 
+    .hoverline:hover {
+        color:#007778;
+        text-decoration:underline;
+    }
+
+    .hrr {
+        color: #007778;
+        margin: -1.1rem;
+        width: auto;
+        padding: 0.1rem;
+        opacity: 1;
+    }
+
 </style>
 
 <div class="container mt-5 px-3">
@@ -65,13 +78,15 @@
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart ">
                                 <p class="titreActu">{{ item.title }}</p>
+                                <hr class="hrr">
                             </div>
+                            
                         </a>
                     </div>
                 {% endfor %}
 
-                <div class="px-5 mb-3 text-end fw-bold">
-                    <a class="px-2 fw-bold" href="{{ path('actualites_rss1') }}">
+                <div class="px-5 mb-3 text-end fw-bold hoverline">
+                    <a class="px-2 fw-bold " href="{{ path('actualites_rss1') }}">
                         En savoir plus  <i class="fa-solid fa-angles-right"></i>
                     </a>               
                 </div>
@@ -85,12 +100,13 @@
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart ">
                                 <p class="titreActu">{{ item.title }}</p>
+                                <hr class="hrr">
                             </div>
                         </a>
                     </div>
                 {% endfor %}
 
-                <div class="px-5 mb-3 text-end fw-bold">
+                <div class="px-5 mb-3 text-end fw-bold hoverline">
                     <a class="px-2 fw-bold" href="{{ path('actualites_rss2') }}">
                         En savoir plus  <i class="fa-solid fa-angles-right"></i>
                     </a>               
@@ -106,12 +122,13 @@
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart ">
                                 <p class="titreActu">{{ item.title }}</p>
+                                <hr class="hrr">
                             </div>
                         </a>
                     </div>
                 {% endfor %}
 
-                <div class="px-5 mb-3 text-end fw-bold">
+                <div class="px-5 mb-3 text-end fw-bold hoverline">
                     <a class="px-2 fw-bold" href="{{ path('actualites_rss3') }}">
                         En savoir plus  <i class="fa-solid fa-angles-right"></i>
                     </a>               
@@ -127,12 +144,14 @@
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart ">
                                 <p class="titreActu">{{ item.title }}</p>
+                                <hr class="hrr">
                             </div>
+                        
                         </a>
                     </div>
                 {% endfor %}
 
-                <div class="px-5 mb-3 text-end fw-bold">
+                <div class="px-5 mb-3 text-end fw-bold hoverline">
                     <a class="px-2 fw-bold" href="{{ path('actualites_rss4') }}">
                         En savoir plus  <i class="fa-solid fa-angles-right"></i>
                     </a>               

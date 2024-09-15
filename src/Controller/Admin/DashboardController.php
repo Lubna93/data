@@ -12,6 +12,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use App\Entity\Science;
 use App\Entity\Tag1;
 use App\Entity\Account;
+use App\Entity\Data;
+use App\Entity\Type;
+use App\Entity\Licence;
 
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
@@ -43,15 +46,30 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Display', 'fas fa-eye', Account::class)
         ]);
 
-        yield MenuItem::section('Science', 'fas fa-book-open');
-        yield MenuItem::subMenu('Science', 'fas fa-ellipsis')->setSubItems([
-            MenuItem::linkToCrud('Créer', 'fas fa-plus ', Science::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Afficher', 'fas fa-eye', Science::class)
+        // yield MenuItem::section('Science', 'fas fa-book-open');
+        // yield MenuItem::subMenu('Science', 'fas fa-ellipsis')->setSubItems([
+        //     MenuItem::linkToCrud('Créer', 'fas fa-plus ', Science::class)->setAction(Crud::PAGE_NEW),
+        //     MenuItem::linkToCrud('Afficher', 'fas fa-eye', Science::class)
+        // ]);
+
+        // yield MenuItem::subMenu('Tags', 'fas fa-ellipsis')->setSubItems([
+        //     MenuItem::linkToCrud('Créer', 'fas fa-plus ', Tag1::class)->setAction(Crud::PAGE_NEW),
+        //     MenuItem::linkToCrud('Afficher', 'fas fa-eye', Tag1::class)
+        // ]);
+
+        yield MenuItem::section('Data', 'fa-solid fa-database');
+        yield MenuItem::subMenu('Data', 'fas fa-ellipsis')->setSubItems([
+            MenuItem::linkToCrud('Créer', 'fas fa-plus ', Data::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Afficher', 'fas fa-eye', Data::class)
         ]);
 
-        yield MenuItem::subMenu('Tags', 'fas fa-ellipsis')->setSubItems([
-            MenuItem::linkToCrud('Créer', 'fas fa-plus ', Tag1::class)->setAction(Crud::PAGE_NEW),
-            MenuItem::linkToCrud('Afficher', 'fas fa-eye', Tag1::class)
+        yield MenuItem::subMenu('Type', 'fas fa-ellipsis')->setSubItems([
+            MenuItem::linkToCrud('Créer', 'fas fa-plus ', Type::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Afficher', 'fas fa-eye', Type::class)
+        ]);
+        yield MenuItem::subMenu('Licence', 'fas fa-ellipsis')->setSubItems([
+            MenuItem::linkToCrud('Créer', 'fas fa-plus ', Licence::class)->setAction(Crud::PAGE_NEW),
+            MenuItem::linkToCrud('Afficher', 'fas fa-eye', Licence::class)
         ]);
     }
 }
