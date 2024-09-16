@@ -55,7 +55,9 @@
                     <div class="col d-flex justify-content-center align-items-reverse">
                         <a href="{{ item.link|default('') }}" target="_blank">
                             <div class="cart">
-                                <p class="titreActu">{{ item.title }}</p>
+                                <p class="titreActu">
+                                <img src="{{ asset('images/veille/inserm.png') }}" style="max-height:1rem;" alt="logo">
+                                 {{ item.title }}</p>
 
                                 <div class="text-dark text-start pb-2">
                                     <small class="text">
