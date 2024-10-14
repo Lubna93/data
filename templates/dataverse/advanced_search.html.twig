@@ -1,0 +1,282 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche Avancée | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+    .cart {
+        background-color: var(--grayb);
+        width: 23rem;
+        min-height: 20rem;
+        box-shadow: 0 4px 8px 1px rgba(0, 0, 0.2, 0.1);
+        border-radius: 0;
+        margin: 1rem;
+        transition: opacity 400ms;
+        color: black;
+    }
+    .cart:hover {
+        box-shadow: 0 5px 35px 0px rgba(0,0,0,.1);
+        transform: translateY(-1px);
+        opacity:0.7;
+    }
+</style>
+
+<div class="container mt-5 px-5">
+    <div class="row">
+        <div class="col-12">
+
+    
+        <form action="{{ path('results_search') }}" method="get">
+    <!-- First Row: Title, Author, Keyword, Producer, and Distributor -->
+    <div class="row mb-3 px-5">
+        <div class="col-md-12 py-2">
+            <input type="text" name="title" value="{{ search_params.title|default('') }}" class="form-control rounded-0 p-2" placeholder="Titre">
+        </div>
+        <div class="col-md-12 py-2">
+            <input type="text" name="subtitle" value="{{ search_params.subtitle|default('') }}" class="form-control rounded-0 p-2" placeholder="Sous-titre">
+        </div>
+        <div class="col-md-12 py-2">
+            <input type="text" name="alternativeURL" value="{{ search_params.alternativeURL|default('') }}" class="form-control rounded-0 p-2" placeholder="Lien vers les données">
+        </div>
+        <div class="col-md-12 py-2">
+            <input type="text" name="authorName" value="{{ search_params.author|default('') }}" class="form-control rounded-0 p-2" placeholder="Auteur Nom">
+        </div>
+
+        <div class="col-md-12 py-2">
+            <select name="authorIdentifierScheme" class="form-control rounded-0 p-2">
+                <option value="">-- Auteur Type d'identifiant --</option>
+                <option value="DOI" {% if search_params.authorIdentifierScheme == 'DOI' %}selected{% endif %}>DOI</option>
+                <option value="idHAL" {% if search_params.authorIdentifierScheme == 'idHAL' %}selected{% endif %}>idHAL</option>
+                <option value="ISNI" {% if search_params.authorIdentifierScheme == 'ISNI' %}selected{% endif %}>ISNI</option>
+                <option value="ORCID" {% if search_params.authorIdentifierScheme == 'ORCID' %}selected{% endif %}>ORCID</option>
+                <option value="ROR" {% if search_params.authorIdentifierScheme == 'ROR' %}selected{% endif %}>ROR</option>
+            </select>
+        </div>
+        <div class="col-md-12 py-2">
+            <input type="text" name="description" value="{{ search_params.description|default('') }}" class="form-control rounded-0 p-2" placeholder="Description Texte">
+        </div>
+
+        <div class="col-md-12 py-2">
+            <select name="kindOfData" class="form-control rounded-0 p-2">
+                <option value="">-- Type de données --</option>
+                <option value="Audiovisual" {% if search_params.kindOfData == 'Audiovisual' %}selected{% endif %}>Audiovisual</option>
+                <option value="Collection" {% if search_params.kindOfData == 'Collection' %}selected{% endif %}>Collection</option>
+                <option value="Dataset" {% if search_params.kindOfData == 'Dataset' %}selected{% endif %}>Dataset</option>
+                <option value="Event" {% if search_params.kindOfData == 'Event' %}selected{% endif %}>Event</option>
+                <option value="Image" {% if search_params.kindOfData == 'Image' %}selected{% endif %}>Image</option>
+                <option value="Interactive Resource" {% if search_params.kindOfData == 'Interactive Resource' %}selected{% endif %}>Interactive Resource</option>
+                <option value="Model" {% if search_params.kindOfData == 'Model' %}selected{% endif %}>Model</option>
+                <option value="Physical Object" {% if search_params.kindOfData == 'Physical Object' %}selected{% endif %}>Physical Object</option>
+                <option value="Service" {% if search_params.kindOfData == 'Service' %}selected{% endif %}>Service</option>
+                <option value="Software" {% if search_params.kindOfData == 'Software' %}selected{% endif %}>Software</option>
+                <option value="Sound" {% if search_params.kindOfData == 'Sound' %}selected{% endif %}>Sound</option>
+                <option value="Text" {% if search_params.kindOfData == 'Text' %}selected{% endif %}>Text</option>
+                <option value="Workflow" {% if search_params.kindOfData == 'Workflow' %}selected{% endif %}>Workflow</option>
+                <option value="Other" {% if search_params.kindOfData == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <div class="col-md-12 py-2">
+            <select name="dataOrigin" class="form-control rounded-0 p-2">
+                <option value="">-- Origine des données --</option>
+                <option value="observational data" {% if search_params.dataOrigin|default('') == 'observational data' %}selected{% endif %}>Observational Data</option>
+                <option value="experimental data" {% if search_params.dataOrigin|default('') == 'experimental data' %}selected{% endif %}>Experimental Data</option>
+                <option value="survey data" {% if search_params.dataOrigin|default('') == 'survey data' %}selected{% endif %}>Survey Data</option>
+                <option value="analysis data" {% if search_params.dataOrigin|default('') == 'analysis data' %}selected{% endif %}>Analysis Data</option>
+                <option value="text corpus" {% if search_params.dataOrigin|default('') == 'text corpus' %}selected{% endif %}>Text Corpus</option>
+                <option value="simulation data" {% if search_params.dataOrigin|default('') == 'simulation data' %}selected{% endif %}>Simulation Data</option>
+                <option value="aggregate data" {% if search_params.dataOrigin|default('') == 'aggregate data' %}selected{% endif %}>Aggregate Data</option>
+                <option value="audiovisual corpus" {% if search_params.dataOrigin|default('') == 'audiovisual corpus' %}selected{% endif %}>Audiovisual Corpus</option>
+                <option value="computer code" {% if search_params.dataOrigin|default('') == 'computer code' %}selected{% endif %}>Computer Code</option>
+                <option value="Other" {% if search_params.dataOrigin|default('') == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="seriesName" value="{{ search_params.seriesName|default('') }}" class="form-control rounded-0 p-2" placeholder="Séries Nom">
+        </div>
+
+        <div class="col-md-12 py-2">
+            <select name="subject" class="form-control rounded-0 p-2">
+                <option value="">-- Sujet --</option>
+                <option value="Agricultural Sciences" {% if search_params.subject == 'Agricultural Sciences' %}selected{% endif %}>Agricultural Sciences</option>
+                <option value="Arts and Humanities" {% if search_params.subject == 'Arts and Humanities' %}selected{% endif %}>Arts and Humanities</option>
+                <option value="Astronomy and Astrophysics" {% if search_params.subject == 'Astronomy and Astrophysics' %}selected{% endif %}>Astronomy and Astrophysics</option>
+                <option value="Business and Management" {% if search_params.subject == 'Business and Management' %}selected{% endif %}>Business and Management</option>
+                <option value="Chemistry" {% if search_params.subject == 'Chemistry' %}selected{% endif %}>Chemistry</option>
+                <option value="Computer and Information Science" {% if search_params.subject == 'Computer and Information Science' %}selected{% endif %}>Computer and Information Science</option>
+                <option value="Earth and Environmental Sciences" {% if search_params.subject == 'Earth and Environmental Sciences' %}selected{% endif %}>Earth and Environmental Sciences</option>
+                <option value="Engineering" {% if search_params.subject == 'Engineering' %}selected{% endif %}>Engineering</option>
+                <option value="Law" {% if search_params.subject == 'Law' %}selected{% endif %}>Law</option>
+                <option value="Mathematical Sciences" {% if search_params.subject == 'Mathematical Sciences' %}selected{% endif %}>Mathematical Sciences</option>
+                <option value="Medicine, Health and Life Sciences" {% if search_params.subject == 'Medicine, Health and Life Sciences' %}selected{% endif %}>Medicine, Health and Life Sciences</option>
+                <option value="Physics" {% if search_params.subject == 'Physics' %}selected{% endif %}>Physics</option>
+                <option value="Social Sciences" {% if search_params.subject == 'Social Sciences' %}selected{% endif %}>Social Sciences</option>
+                <option value="Other" {% if search_params.subject == 'Other' %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+        
+        <div class="col-md-12 py-2">
+            <select name="lifeCycleStep" class="form-control rounded-0 p-2">
+                <option value="">-- Étape du cycle de vie --</option>
+                <option value="Proposition d'étude" {% if search_params.lifeCycleStep|default('') == "Proposition d'étude" %}selected{% endif %}>Proposition d'étude</option>
+                <option value="Financement" {% if search_params.lifeCycleStep|default('') == "Financement" %}selected{% endif %}>Financement</option>
+                <option value="Study design" {% if search_params.lifeCycleStep|default('') == "Study design" %}selected{% endif %}>Study Design</option>
+                <option value="Instrument design" {% if search_params.lifeCycleStep|default('') == "Instrument design" %}selected{% endif %}>Instrument Design</option>
+                <option value="Questionnaire translation" {% if search_params.lifeCycleStep|default('') == "Questionnaire translation" %}selected{% endif %}>Questionnaire Translation</option>
+                <option value="Questionnaire adaptation" {% if search_params.lifeCycleStep|default('') == "Questionnaire adaptation" %}selected{% endif %}>Questionnaire Adaptation</option>
+                <option value="Interviewer training" {% if search_params.lifeCycleStep|default('') == "Interviewer training" %}selected{% endif %}>Interviewer Training</option>
+                <option value="Ethics review" {% if search_params.lifeCycleStep|default('') == "Ethics review" %}selected{% endif %}>Ethics Review</option>
+                <option value="Legal review" {% if search_params.lifeCycleStep|default('') == "Legal review" %}selected{% endif %}>Legal Review</option>
+                <option value="Sampling" {% if search_params.lifeCycleStep|default('') == "Sampling" %}selected{% endif %}>Sampling</option>
+                <option value="Instrument pre-testing" {% if search_params.lifeCycleStep|default('') == "Instrument pre-testing" %}selected{% endif %}>Instrument Pre-testing</option>
+                <option value="Pilot study" {% if search_params.lifeCycleStep|default('') == "Pilot study" %}selected{% endif %}>Pilot Study</option>
+                <option value="Data collection" {% if search_params.lifeCycleStep|default('') == "Data collection" %}selected{% endif %}>Data Collection</option>
+                <option value="Data collection reports" {% if search_params.lifeCycleStep|default('') == "Data collection reports" %}selected{% endif %}>Data Collection Reports</option>
+                <option value="Data processing" {% if search_params.lifeCycleStep|default('') == "Data processing" %}selected{% endif %}>Data Processing</option>
+                <option value="Data processing: Coding" {% if search_params.lifeCycleStep|default('') == "Data processing: Coding" %}selected{% endif %}>Data Processing: Coding</option>
+                <option value="Data processing: Classification" {% if search_params.lifeCycleStep|default('') == "Data processing: Classification" %}selected{% endif %}>Data Processing: Classification</option>
+                <option value="Data processing: Transcriptions of interviews" {% if search_params.lifeCycleStep|default('') == "Data processing: Transcriptions of interviews" %}selected{% endif %}>Data Processing: Transcriptions of Interviews</option>
+                <option value="Data processing: Weighting" {% if search_params.lifeCycleStep|default('') == "Data processing: Weighting" %}selected{% endif %}>Data Processing: Weighting</option>
+                <option value="Data processing: Aggregation" {% if search_params.lifeCycleStep|default('') == "Data processing: Aggregation" %}selected{% endif %}>Data Processing: Aggregation</option>
+                <option value="Data processing: Composite measures" {% if search_params.lifeCycleStep|default('') == "Data processing: Composite measures" %}selected{% endif %}>Data Processing: Composite Measures</option>
+                <option value="Data processing: Derivation" {% if search_params.lifeCycleStep|default('') == "Data processing: Derivation" %}selected{% endif %}>Data Processing: Derivation</option>
+                <option value="Data processing: Quality checks" {% if search_params.lifeCycleStep|default('') == "Data processing: Quality checks" %}selected{% endif %}>Data Processing: Quality Checks</option>
+                <option value="Data processing: Data integration" {% if search_params.lifeCycleStep|default('') == "Data processing: Data integration" %}selected{% endif %}>Data Processing: Data Integration</option>
+                <option value="Data processing: Disclosure limitation" {% if search_params.lifeCycleStep|default('') == "Data processing: Disclosure limitation" %}selected{% endif %}>Data Processing: Disclosure Limitation</option>
+                <option value="Data processing: Imputation" {% if search_params.lifeCycleStep|default('') == "Data processing: Imputation" %}selected{% endif %}>Data Processing: Imputation</option>
+                <option value="Metadata production" {% if search_params.lifeCycleStep|default('') == "Metadata production" %}selected{% endif %}>Metadata Production</option>
+                <option value="Metadata editing" {% if search_params.lifeCycleStep|default('') == "Metadata editing" %}selected{% endif %}>Metadata Editing</option>
+                <option value="Metadata translation" {% if search_params.lifeCycleStep|default('') == "Metadata translation" %}selected{% endif %}>Metadata Translation</option>
+                <option value="Final report" {% if search_params.lifeCycleStep|default('') == "Final report" %}selected{% endif %}>Final Report</option>
+                <option value="Evaluation" {% if search_params.lifeCycleStep|default('') == "Evaluation" %}selected{% endif %}>Evaluation</option>
+                <option value="Original release" {% if search_params.lifeCycleStep|default('') == "Original release" %}selected{% endif %}>Original Release</option>
+                <option value="Deposit" {% if search_params.lifeCycleStep|default('') == "Deposit" %}selected{% endif %}>Deposit</option>
+                <option value="Preservation package production" {% if search_params.lifeCycleStep|default('') == "Preservation package production" %}selected{% endif %}>Preservation Package Production</option>
+                <option value="Dissemination package production" {% if search_params.lifeCycleStep|default('') == "Dissemination package production" %}selected{% endif %}>Dissemination Package Production</option>
+                <option value="Dissemination package release" {% if search_params.lifeCycleStep|default('') == "Dissemination package release" %}selected{% endif %}>Dissemination Package Release</option>
+                <option value="Data analysis reports" {% if search_params.lifeCycleStep|default('') == "Data analysis reports" %}selected{% endif %}>Data Analysis Reports</option>
+                <option value="New version release" {% if search_params.lifeCycleStep|default('') == "New version release" %}selected{% endif %}>New Version Release</option>
+                <option value="Other" {% if search_params.lifeCycleStep|default('') == "Other" %}selected{% endif %}>Other</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="keywordValue" value="{{ search_params.keywordValue|default('') }}" class="form-control rounded-0 p-2" placeholder="Mot-clé Terme">
+        </div>
+
+        <div class="col-md-12 py-2">
+            <select name="language" class="form-control rounded-0 p-2">
+                <option value="">-- Langue --</option>
+                <option value='"English"' {% if search_params.language == 'English' %}selected{% endif %}>English</option>
+                <option value='"French"' {% if search_params.language == 'French' %}selected{% endif %}>French</option>
+                <option value='"Spanish"' {% if search_params.language == 'Spanish' %}selected{% endif %}>Spanish</option>
+                <option value='"Chinese"' {% if search_params.language == 'Chinese' %}selected{% endif %}>Chinese</option>
+                <option value='"Arabic"' {% if search_params.language == 'Arabic' %}selected{% endif %}>Arabic</option>
+                <option value="Portuguese" {% if search_params.language == 'Portuguese' %}selected{% endif %}>Portuguese</option>
+                <option value='"German"' {% if search_params.language == 'German' %}selected{% endif %}>German</option>
+                <option value='"Russian"' {% if search_params.language == 'Russian' %}selected{% endif %}>Russian</option>
+                <option value='"Hindi"' {% if search_params.language == 'Hindi' %}selected{% endif %}>Hindi</option>
+                <option value='"Japanese"' {% if search_params.language == 'Japanese' %}selected{% endif %}>Japanese</option>
+                <option value='"Korean"' {% if search_params.language == 'Korean' %}selected{% endif %}>Korean</option>
+                <option value='"Italian"' {% if search_params.language == 'Italian' %}selected{% endif %}>Italian</option>
+                <option value='"Dutch"' {% if search_params.language == 'Dutch' %}selected{% endif %}>Dutch</option>
+                <option value='"Turkish"' {% if search_params.language == 'Turkish' %}selected{% endif %}>Turkish</option>
+            </select>
+        </div>
+
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="producerName" value="{{ search_params.producerName|default('') }}" class="form-control rounded-0 p-2" placeholder="Producteur Nom">
+        </div>
+        
+        <div class="col-md-12 py-2">
+            <input type="text" name="producerAffiliation" value="{{ search_params.producerAffiliation|default('') }}" class="form-control rounded-0 p-2" placeholder="Producteur Affiliation">
+        </div>
+        <div class="col-md-12 py-2">
+            <input type="text" name="productionDate" value="{{ search_params.productionDate|default('') }}" class="form-control rounded-0 p-2" placeholder="Date de production">
+        </div>
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="productionPlace" value="{{ search_params.productionPlace|default('') }}" class="form-control rounded-0 p-2" placeholder="Localisation de la production">
+        </div>
+
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="contributorName" value="{{ search_params.contributorName|default('') }}" class="form-control rounded-0 p-2" placeholder="Nom du contributeur">
+        </div>
+
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="distributorName" value="{{ search_params.distributorName|default('') }}" class="form-control rounded-0 p-2" placeholder="Distributeur">
+        </div>
+
+
+        <div class="col-md-12 py-2">
+            <input type="text" name="distributionDate" value="{{ search_params.distributionDate|default('') }}" class="form-control rounded-0 p-2" placeholder="Date de distribution">
+        </div>
+
+
+
+    <div class="col-md-12 py-2">
+        <select name="relatedDatasetIDType" class="form-control rounded-0 p-2">
+            <option value="">-- Jeu de données associé Type d'identifiant --</option>
+            <option value="ark" {% if search_params.relatedDatasetIDType == 'ark' %}selected{% endif %}>ark</option>
+            <option value="doi" {% if search_params.relatedDatasetIDType == 'doi' %}selected{% endif %}>doi</option>
+            <option value="handle" {% if search_params.relatedDatasetIDType == 'handle' %}selected{% endif %}>handle</option>
+            <option value="purl" {% if search_params.relatedDatasetIDType == 'purl' %}selected{% endif %}>purl</option>
+            <option value="urn" {% if search_params.relatedDatasetIDType == 'urn' %}selected{% endif %}>urn</option>
+            <option value="rrid" {% if search_params.relatedDatasetIDType == 'rrid' %}selected{% endif %}>rrid</option>
+        </select>
+    </div>
+
+    <div class="col-md-12 py-2">
+        <select name="dsDescriptionLanguage" class="form-control rounded-0 p-2">
+            <option value="">-- Description Langue --</option>
+            <option value='"English"' {% if search_params.dsDescriptionLanguage == 'English' %}selected{% endif %}>English</option>
+            <option value='"French"' {% if search_params.dsDescriptionLanguage == 'French' %}selected{% endif %}>French</option>
+            <option value='"Spanish"' {% if search_params.dsDescriptionLanguage == 'Spanish' %}selected{% endif %}>Spanish</option>
+            <option value='"Chinese"' {% if search_params.dsDescriptionLanguage == 'Chinese' %}selected{% endif %}>Chinese</option>
+            <option value='"Arabic"' {% if search_params.dsDescriptionLanguage == 'Arabic' %}selected{% endif %}>Arabic</option>
+            <option value="Portuguese" {% if search_params.dsDescriptionLanguage == 'Portuguese' %}selected{% endif %}>Portuguese</option>
+            <option value='"German"' {% if search_params.dsDescriptionLanguage == 'German' %}selected{% endif %}>German</option>
+            <option value='"Russian"' {% if search_params.dsDescriptionLanguage == 'Russian' %}selected{% endif %}>Russian</option>
+            <option value='"Hindi"' {% if search_params.dsDescriptionLanguage == 'Hindi' %}selected{% endif %}>Hindi</option>
+            <option value='"Japanese"' {% if search_params.dsDescriptionLanguage == 'Japanese' %}selected{% endif %}>Japanese</option>
+            <option value='"Korean"' {% if search_params.dsDescriptionLanguage == 'Korean' %}selected{% endif %}>Korean</option>
+            <option value='"Italian"' {% if search_params.dsDescriptionLanguage == 'Italian' %}selected{% endif %}>Italian</option>
+            <option value='"Dutch"' {% if search_params.dsDescriptionLanguage == 'Dutch' %}selected{% endif %}>Dutch</option>
+            <option value='"Turkish"' {% if search_params.dsDescriptionLanguage == 'Turkish' %}selected{% endif %}>Turkish</option>
+        </select>
+    </div>
+
+    
+    <div class="col-md-12 py-2">
+        <input type="text" name="dsPublicationDate" value="{{ search_params.dsPublicationDate|default('') }}" class="form-control rounded-0 p-2" placeholder="Année de publication">
+    </div>
+
+    </div>
+
+    <!-- Search Button Row -->
+    <div class="row mb-3">
+        <div class="col-md-12 text-center">
+            <button class="btn btn-dark rounded-0 p-2 w-50" type="submit"><i class="fas fa-search"></i> Rechercher</button>
+        </div>
+    </div>
+    <div class="col-12 text-center">
+        <a href="{{ path('advanced_search') }}"><p>Effacer la recherche</p></a>
+    </div>
+
+</form>
+
+
+
+        
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

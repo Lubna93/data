@@ -33,9 +33,14 @@
             </div>
             </form>
         </div>
+        <div class="d-flex align-items-end flex-column mb-3" >
+        <a href="{{ path('advanced_search') }}" class="text-dark">
+            <div class="mt-auto p-2">Recherche avancée <i class="fa-brands fa-searchengin"></i> </div>
+        </a>
+    </div>
 
         <div class="col-12 text-center">
-             <h1 class="fw-bold pb-4">Les résultats de "{{ query|default('cnrs') }}"</h1>
+             <h1 class="fw-bold pb-4">Les résultats de "{{ query|default('univ-ch') }}"</h1>
         </div>
     </div>
 </div>
@@ -46,7 +51,7 @@
             <div class="col d-flex justify-content-center ">
                 <a href="{{ dataset.url|default('') }}" target="_blank">
                     <div class="cart p-4">
-                        <p class="headvert"><strong>{{ dataset.name }}</strong></p>
+                        <p class="headvert"><strong> {{ dataset.name }}</strong></p>
                         
                         <p ><i class="fa-solid fa-newspaper"></i><small> {{ dataset.description|length > 100 ? dataset.description|slice(0, 100) ~ '……' : dataset.description}}</small></p>
                         <p><i class="fa-solid fa-chalkboard-user"></i> {{ dataset.publisher }}</p>

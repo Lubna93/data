@@ -48,7 +48,8 @@
         </form>
     </div>
     <div class="d-flex align-items-end flex-column mb-3" >
-        <a href="/" class="text-dark">
+        {# <a href="https://entrepot.recherche.data.gouv.fr/dataverse/univ-ch/search" class="text-dark"> #}
+        <a href="{{ path('advanced_search') }}" class="text-dark">
             <div class="mt-auto p-2">Recherche avancée <i class="fa-brands fa-searchengin"></i> </div>
         </a>
     </div>
@@ -61,7 +62,7 @@
 <div class="row">
 
     <div class="col d-flex justify-content-center p-3 p-md-4">
-        <a href="https://entrepot.recherche.data.gouv.fr/loginpage.xhtml;jsessionid=d9dab92a119c004ce5b60e7e7e05?redirectPage=%2Fdataverse.xhtml" target="_blank">
+        <a href="https://entrepot.recherche.data.gouv.fr/dataset.xhtml?ownerId=201329" target="_blank">
             <div class="card bg-light text-center border border-black rounded-0 borderShadow py-0 px-4" id="bk">
                 <div class="card-body px-5 px-md-2 px-sm-1">
                     <div><img src="{{ asset('images/accueil/3points.png') }}" alt="logo" style="height: 0.4rem;"></div>
@@ -74,7 +75,7 @@
     </div>
 
     <div class="col d-flex justify-content-center p-3 p-md-4">
-        <a href="{{ path('app_traiter') }}" target="_blank">
+        <a href="/" target="_blank">
             <div class="card bg-light text-center border border-black rounded-0 borderShadow py-0 px-4" id="bk">
                 <div class="card-body px-5 px-md-2 px-sm-1">
                     <div><img src="{{ asset('images/accueil/3points.png') }}" alt="logo" style="height: 0.4rem;"></div>

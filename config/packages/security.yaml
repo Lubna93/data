@@ -35,6 +35,24 @@ security:
             logout:
                 path: /logout                            
                            
+        # cas:
+        #     pattern: ^/cas/
+        #     provider: chain_provider
+        #     security: true
+        #     custom_authenticators:
+        #         - cas.security.authentication.authenticator
+        #     logout:
+        #         path: /logout
+
+        # casc:
+        #     pattern: ^/casc/
+        #     provider: chain_provider
+        #     security: true
+        #     custom_authenticators:
+        #         - casc.security.authentication.authenticator
+        #     logout:
+        #         path: /logout2
+
         cas:
             pattern: ^/cas/
             provider: chain_provider
@@ -45,7 +63,7 @@ security:
                 path: /logout
 
         casc:
-            pattern: ^/casc
+            pattern: ^/casc/
             provider: chain_provider
             security: true
             custom_authenticators:

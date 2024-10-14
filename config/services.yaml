@@ -42,6 +42,25 @@ l3_cas_cuard:
     gateway2: '%env(bool:CAS_GATEWAY2)%'
 
 
+# l3_cas_guard:
+#     hosts:
+#         - host: '%env(string:CAS_HOST)%'
+#           path: '%env(string:CAS_PATH)%'
+#           port: '%env(int:CAS_PORT)%'
+#           ca: '%env(bool:CAS_CA)%'
+#           handleLogoutRequest: '%env(bool:CAS_HANDLE_LOGOUT_REQUEST)%'
+#           casLogoutTarget: '%env(string:CAS_LOGOUT_TARGET)%'
+#           force: '%env(bool:CAS_FORCE)%'
+#           gateway: '%env(bool:CAS_GATEWAY)%'
+#         - host: '%env(string:CAS_HOST2)%'
+#           path: '%env(string:CAS_PATH2)%'
+#           port: '%env(int:CAS_PORT2)%'
+#           ca: '%env(bool:CAS_CA2)%'
+#           handleLogoutRequest: '%env(bool:CAS_HANDLE_LOGOUT_REQUEST2)%'
+#           casLogoutTarget: '%env(string:CAS_LOGOUT_TARGET2)%'
+#           force: '%env(bool:CAS_FORCE2)%'
+#           gateway: '%env(bool:CAS_GATEWAY2)%'
+        
 services:
 
     # default configuration for services in *this* file
