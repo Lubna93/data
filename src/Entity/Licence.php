@@ -23,7 +23,7 @@ class Licence
     /**
      * @var Collection<int, Data>
      */
-    #[ORM\OneToMany(targetEntity: Data::class, mappedBy: 'Licence')]
+    #[ORM\OneToMany(targetEntity: Data::class, mappedBy: 'licence')]
     private Collection $datas;
 
     public function __construct()

@@ -1,0 +1,95 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Valider le compter
+{% endblock %}
+{% form_theme account_form 'bootstrap_5_layout.html.twig' %}
+
+
+{% block body %}
+	<style>
+
+	</style>
+	<div class="container p-5">
+
+
+		<h1 class="h4 fw-bold text-center">
+			Validez votre compte
+		</h1>
+		
+
+
+			<br>
+			{% for message in app.flashes('success') %}
+				<div class="alert alert-success">
+					{{ message }}
+				</div><br>
+			{% endfor %}
+
+			{% for message in app.flashes('info') %}
+				<div class="alert alert-info">
+					{{ message }}
+				</div><br>
+			{% endfor %}
+			{{ form_start(account_form) }}
+
+			<div class="row g-4">
+
+
+				<div class="col-md-12">
+					{{ form_row(account_form.uid, { label: 'UID : *',
+                     required: 'true',
+                      attr: {
+                      value : app.user.uid,
+                      readonly: true
+                      }            
+                    }) }}
+				</div>
+
+
+				<div class="col-md-12">
+						{{ form_row(account_form.email, {
+                      label: 'Adresse mail : *',
+                      required: 'true'
+                    }) }}
+				</div>
+
+				<div class="col-md-12">
+						{{ form_row(account_form.prenom, {
+                      label: 'Prénom : *',
+                      required: 'true'
+                    }) }}
+				</div>
+                <div class="col-md-12">
+                {{ form_row(account_form.nom, {
+                    label: 'Nom : *',
+                    required: 'true'
+                    }) }}
+                </div>
+                <div class="col-md-12">
+                        {{ form_row(account_form.poste, {
+                    label: 'Poste :',
+					required: false
+                    }) }}
+                </div>                
+				<div class="col-md-12">
+					{{ form_row(account_form.agreeTerms, { label: "Accepter les conditions générales d'utilisation (CGU).", id: "acceptCheckbox" }) }}
+				</div>
+
+
+			<div class="d-flex justify-content-center">
+			<button type="submit" class="px-5 btn btn-outline-dark">Valider</button>
+			</div>
+
+			</div>
+
+
+			{{ form_end(account_form) }}
+
+		
+
+		<br>
+
+	</div>
+
+
+{% endblock %}

@@ -21,7 +21,7 @@ framework:
     #fragments: true
     php_errors:
         log: true
-    # error_controller: App\Controller\ErrorController::index
+    error_controller: App\Controller\ErrorController::index
 
 
 when@test:

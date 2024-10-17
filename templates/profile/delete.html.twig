@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+<div class="container mt-3 pt-1">
+
+	<div class="row d-flex justify-content-center">
+		<div class="col-xs-12 col-lg-6 pl-lg-4 pt-4 pt-sm-0 mt-2 mt-lg-0">
+			<div class="card  mb-3" style="background: transparent;">
+				<div class="card-header bg-transparent  fw-bold ">Confirmation de suppression de compte</div>
+				<div class="card-body">
+					<p class="card-title">Cette action effacera toutes vos informations personnelles et contenus associés à votre compte.</p>
+					<p class="card-text">Êtes-vous sûr de vouloir supprimer votre compte ? Cette action est irréversible.</p>
+					<a href="{{ path('app_profile_delete', {'id': app.user.id}) }}" onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce compte ?');" class="btn btn-outline-danger btn-sm">
+						Supprimer le compte
+					</a>
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+<br>
+
+
+
+
+{% endblock %}

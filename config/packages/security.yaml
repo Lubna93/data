@@ -25,15 +25,15 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-        main:
-            pattern: ^/
-            security: true
-            lazy: true
-            provider: chain_provider
-            custom_authenticators:
-                - App\Security\ChainedAuthenticator         
-            logout:
-                path: /logout                            
+        # main:
+        #     pattern: ^/
+        #     security: true
+        #     lazy: true
+        #     provider: chain_provider
+        #     custom_authenticators:
+        #         - App\Security\ChainedAuthenticator         
+        #     logout:
+        #         path: /logout                            
                            
         # cas:
         #     pattern: ^/cas/
@@ -78,15 +78,17 @@ security:
             custom_authenticators:
                 - App\Security\OrcidAuthenticator
 
-        # main:
-        #     pattern: ^/
-        #     security: true
-        #     lazy: true
-        #     provider: chain_provider
-        #     custom_authenticators:
-        #         - casc.security.authentication.authenticator
-        #     logout:
-        #         path: /logout
+        main:
+            pattern: ^/
+            security: true
+            lazy: true
+            provider: chain_provider
+            custom_authenticators:
+                - App\Security\ChainedAuthenticator         
+            logout:
+                path: /logout   
+
+
 
         # login:
         #     pattern: ^/api/login_check

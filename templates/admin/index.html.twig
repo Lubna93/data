@@ -7,8 +7,46 @@
 
 {% block main %}
 <style>
-
+    .counter {
+        background-color: rgba(245,245,245);
+        padding: 20px 0;
+        border-radius: 5px;
+        color: black !important;
+    }
+    .counter:hover {
+        box-shadow: 1px 2px 2px 1px #e9ecef;
+        transform: scale(1.1);
+    }
+    .count-text {
+        font-size: 13px;
+        font-weight: normal;
+        margin-top: 10px;
+        margin-bottom: 0;
+        text-align: center;
+    }
 </style>
 
+<div class="row text-center">
 
+	<div class="col-3">
+        <a href="http://localhost:8000/admin?crudAction=index&crudControllerFqcn=App%5CController%5CAdmin%5CAccountCrudController">
+            <div class="counter">
+                <i class="fa fa-users fa-2x"></i>
+                {% set count1 = account|length %}
+                <p class="h4 text-dark mt-3">{{count1}}</p>
+                <p class="count-text ">Utilisateurs</p>
+            </div>
+        </a>
+	</div>
+
+    <div class="col-3">
+        <a href="/api">
+            <div class="counter">
+                <i class="fa-solid fa-circle-nodes fa-2x"></i>
+                <p class="h4 text-dark mt-3">API Platform</p>
+                <p class="count-text ">Accéder</p>
+            </div>
+        </a>
+	</div>
+</div>    
 {% endblock %}

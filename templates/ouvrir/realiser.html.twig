@@ -16,12 +16,12 @@
 <section>
 
 	<div class="row d-flex justify-content-evenly pt-4 mx-3">
-		<div class="col-md-auto">
+		{# <div class="col-md-auto">
 			<a href={{ path('ouvrir') }}
 			class="h3 head {{ app.request.get('_route') == 'ouvrir' ? 'active' }}">                   
 					PaulVa data                   
 			</a>
-		</div>
+		</div> #}
 		<div class="col-md-auto">
 			<a href={{ path('science_realiser') }}
 			class=" h3 head {{ app.request.get('_route') == 'science_realiser' ? 'active' }}"> 
@@ -48,29 +48,6 @@
 
 <section class="">
 
-{# <h1 class="fw-bold text-uppercase fs-1 py-3 px-5"> Lorem ipsum dolor sit amet</h1>
-<p class="px-5">labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p> #}
-
-    {# <div class="p-4 container mt-5 text-body">
-
-		<div class="d-flex justify-content-evenly">
-			<div class="p-1">
-				<a href="https://awa.cremad.fr/">
-					<img class="imgp" src="{{ asset('images/Realisations/awa.png') }}" alt="logo">
-				</a>
-			</div>
-			<div class="p-1">
-				<a href="https://www.ortolang.fr">
-					<img class="imgp" src="{{ asset('images/Realisations/ortolang.png') }}" alt="logo">
-				</a>
-			</div>
-			<div class="p-1">
-				<a href="https://awa.cremad.fr/">
-					<img class="imgp" src="{{ asset('images/Realisations/awa.png') }}" alt="logo">
-				</a>
-			</div>
-		</div>
-	</div> #}
 
 	<div class="col d-flex justify-content-center p-3 p-md-4">
 		<a href="https://awa.cremad.fr" target="_blank">
@@ -86,11 +63,11 @@
 	</div>
 
 	<div class="col d-flex justify-content-center p-3 p-md-4">
-		<a href="https://www.ortolang.fr" target="_blank">
+		<a href="https://www.gypsylang.cremad.fr" target="_blank">
 			<div class="card bg-light text-center border border-black rounded-0 borderShadow py-3 px-4" id="bk">
 				<div class="card-body px-5 px-md-2 px-sm-1">
 					<img class="imgp" src="{{ asset('images/Realisations/ortolang.png') }}" alt="logo">
-					<p class="pt-2 text-black-50">Plate-forme d'outils et de ressources linguistiques pour un traitement optimisé de la langue française.</p> 
+					<p class="pt-2 text-black-50">Étude des variations linguistiques des gitans et non gitans à Perpignan sur trois générations.</p> 
 				</div>
 			</div>
 		</a>

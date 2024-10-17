@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier mes informations{% endblock %}
+{% form_theme edit_form 'bootstrap_5_layout.html.twig' %}
+
+
+{% block body %}
+<style>
+
+</style>
+<div class="container p-5">
+
+
+		<h1 class="h4 fw-bold text-center">
+			Modifier mes informations
+		</h1>
+
+ {{ form_start(edit_form) }} 
+			<div class="row g-4">
+
+				<div class="col-md-12">
+
+					{{ form_row(edit_form.uid, { label: 'UID : *',
+                     required: 'true',
+                      attr: {
+                      readonly: true
+                      }            
+                    }) }}
+				</div>
+
+				<div class="col-md-12">
+						{{ form_row(edit_form.email, {
+                      label: 'Adresse mail : *', 
+						}) }}
+				</div>
+				<div class="col-md-12">
+						{{ form_row(edit_form.prenom, {
+                      label: 'Prénom : *',
+                      required: 'true'
+                    }) }}
+				</div>
+                <div class="col-md-12">
+                {{ form_row(edit_form.nom, {
+                    label: 'Nom : *',
+                    required: 'true'
+                    }) }}
+                </div>
+                <div class="col-md-12">
+                        {{ form_row(edit_form.poste, {
+                    label: 'Poste :'
+                    }) }}
+                </div>   
+
+
+
+
+				<div class="col-md-12" >
+					{{ form_row(edit_form.agreeTerms, {
+							label: "Accepter les conditions générales d'utilisation (CGU).",
+							attr: {
+								checked: edit_form.agreeTerms ? 'checked' : ''
+							}
+					}) }}
+					<a href="{{ path('app_legal') }}" class="text-primary pl-4 pb-0 mt-0 small">Cliquez ici pour afficher les (CGU)</a>
+				</div>
+
+
+
+			<div class="d-flex justify-content-center">
+			<button type="submit" class="px-5 btn btn-outline-dark">Valider</button>
+			</div>
+
+			</div>
+
+		
+
+			{{ form_end(edit_form) }}
+
+		
+
+		<br>
+
+
+	
+
+</div>
+
+
+
+{% endblock %}

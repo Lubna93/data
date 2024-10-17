@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon Compte{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+    <div class="container mt-3 pt-1">
+
+
+
+    <div>
+        <div class="row m-3">
+                    {% for label, messages in app.flashes %}
+                        {% for message in messages %}
+                            <div class="alert alert-{{ label }}">
+                                {{ message|trans }}
+                            </div>
+                        {% endfor %}
+                    {% endfor %}
+        </div>
+    </div>
+
+
+<div class="row">
+
+        <div class="col-xs-12 col-lg-6 pl-lg-4 pt-4 pt-sm-0 mt-3 mt-lg-0">
+            <div class=" p-3 mb-6">
+                <div class=" mb-3">
+                    <p class="account-details-header d-inline-block text-decoration-underline"><strong>Modifier mes informations </strong></p>
+                    <a href="edit/{{app.user.id}}" title="Modifier mes informations"><i class="fas fa-pen-to-square pl-2"></i></a>
+                </div>
+                <h6 class="mb-1"><small><strong>UID</strong></small></h6>
+                <p>{{app.user.uid}}</p>
+                <hr>
+                <h6 class="mb-1"><small><strong>Adresse mail</strong></small></h6>
+                <p style="word-break: break-all;">{{app.user.email}}</p>
+                <hr>
+                {% if app.user.prenom is not null %}             
+                <h6 class="mb-1"><small><strong>Prénom</strong></small></h6>
+                <p style="word-break: break-all;">{{app.user.prenom}}</p>
+                <hr>
+                {% endif %}
+                {% if app.user.nom is not null %}             
+                <h6 class="mb-1"><small><strong>Nom</strong></small></h6>
+                <p style="word-break: break-all;">{{app.user.nom}}</p>
+                <hr>
+                {% endif %}
+                {% if app.user.poste is not null %}  
+                <h6 class="mb-1"><small><strong>Poste</strong></small></h6>
+                <p style="word-break: break-all;">{{app.user.poste}}</p>
+                <hr>
+                {% endif %}           
+
+            <a href="{{ path('app_delete') }}"
+            >
+                <button type="button" class="btn btn-outline-danger btn-sm mt-3">
+                    Supprimer le compte
+                </button>
+            </a>
+        </div>
+        </div>
+
+</div>
+
+
+
+      
+    </div>
+
+    <br>
+
+{% endblock %}

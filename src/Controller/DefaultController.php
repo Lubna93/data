@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends AbstractController
 {
 
-// // HAL
+// UPVM
     #[Route('/login', name: 'login')]
     public function login(Request $request) {
         $target = urlencode($this->getParameter('cas_login_target').'/force');
@@ -19,22 +19,14 @@ class DefaultController extends AbstractController
     }
     
 
-//    PV
-    #[Route('/login2', name: 'login2')]
-    public function login2(Request $request) {
-        $target2 = urlencode($this->getParameter('cas_login_target2').'/force2');
-        $url2 = 'https://'.$this->getParameter('cas_host2') . ((($this->getParameter('cas_port2')!=80) || ($this->getParameter('cas_port2')!=443)) ? ":".$this->getParameter('cas_port2') : "") . $this->getParameter('cas_path2') . '/login?service=';
-        return $this->redirect($url2 . $target2);
-    }
-    // #[Route('/casc/login2', name: 'login2')]
+//  HAL
+    // #[Route('/login2', name: 'login2')]
     // public function login2(Request $request) {
-    //     $target2 = urlencode($this->getParameter('cas_login_target2').'/casc/force2');
+    //     $target2 = urlencode($this->getParameter('cas_login_target2').'/force2');
     //     $url2 = 'https://'.$this->getParameter('cas_host2') . ((($this->getParameter('cas_port2')!=80) || ($this->getParameter('cas_port2')!=443)) ? ":".$this->getParameter('cas_port2') : "") . $this->getParameter('cas_path2') . '/login?service=';
     //     return $this->redirect($url2 . $target2);
     // }
-
-
-    
+  
     #[Route('/logout', name: 'logout')]
     public function logout(Request $request) {
         if (($this->getParameter('cas_logout_target') !== null) && (!empty($this->getParameter('cas_logout_target')))) {
@@ -53,7 +45,6 @@ class DefaultController extends AbstractController
         }
     }
 
-
     #[Route('/force', name: 'force')]
     public function force(Request $request) {
 
@@ -68,22 +59,7 @@ class DefaultController extends AbstractController
             return $this->redirect($this->generateUrl('index'));
     }
 
-
-
-    #[Route('/force2', name: 'force2')]
-    public function force2(Request $request) {
-
-            if ($this->getParameter("cas_gateway2")) {
-                if (!isset($_SESSION)) {
-                        session_start();
-                }
-
-                session_destroy();
-            }
-
-            return $this->redirect($this->generateUrl('index'));
-    }
-    // #[Route('/casc/force2', name: 'force2')]
+    // #[Route('/force2', name: 'force2')]
     // public function force2(Request $request) {
 
     //         if ($this->getParameter("cas_gateway2")) {
@@ -94,9 +70,43 @@ class DefaultController extends AbstractController
     //             session_destroy();
     //         }
 
-    //         return $this->redirect($this->generateUrl('app_apropos'));
+    //         return $this->redirect($this->generateUrl('index'));
     // }
 
 
+    // Controller for the second CAS login (login2)
+    #[Route('/login2', name: 'login2')]
+    public function login2(Request $request) {
+        // URL for redirecting to HAL's login with proper return URL after CAS authentication
+        $target2 = urlencode('https://hal.science/user/login?url=https%3A%2F%2Fhal.science%2F');
+        
+        // Construct CAS login URL with proper encoding and CAS server parameters
+        $url2 = 'https://'.$this->getParameter('cas_host2') 
+              . ((($this->getParameter('cas_port2') != 80 && $this->getParameter('cas_port2') != 443)) 
+                ? ":".$this->getParameter('cas_port2') 
+                : "") 
+              . $this->getParameter('cas_path2') 
+              . '/login?service=' . $target2;
+        
+        return $this->redirect($url2);
+    }
+    
+
+
+    
+    // Controller for handling the CAS validation (force2)
+    #[Route('/force2', name: 'force2')]
+    public function force2(Request $request) {
+        // Clear session if gateway is set
+        if ($this->getParameter("cas_gateway2")) {
+            if (!isset($_SESSION)) {
+                session_start();
+            }
+            session_destroy();
+        }
+    
+        // After successful authentication, redirect the user to HAL
+        return $this->redirect('https://hal.science');
+    }
 
 }
