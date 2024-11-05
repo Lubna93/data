@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plan du site | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+
+<div class="container mt-5 px-5">
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="fw-bold">Plan du site</h1>
+        </div>
+    </div>
+</div>
+
+<section class="container px-4">
+    <div class="p-4 container mt-5 bg-light text-body">
+	<div class="px-4">
+
+
+<ul>
+<li><a href="{{ path('homepage') }}" target="_blank" class="text-reset">Accueil</a></li>
+<li>
+    <a href="{{ path('search_datasets') }}" class="text-reset">Rechercher</a>
+    <ul>
+        <li><a href="{{ path('advanced_search') }}" class="text-reset">Recherche avancée</a></li>
+    </ul>
+</li>
+<li><a href="https://entrepot.recherche.data.gouv.fr/dataset.xhtml?ownerId=201329" class="text-reset">Déposer (Accéder à l'entrepôt)</a></li>
+<li><a href="/" class="text-reset">Traiter (Accéder au stockage)</a></li>
+<li>
+    Ouvrir
+    <ul>
+        <li><a href="{{ path('science_realiser') }}" class="text-reset">PaulVa Réalisations</a></li>
+        <li><a href="{{ path('entrepot') }}" class="text-reset">Outils</a></li>
+        <li>
+            <a href="{{ path('actualites_rss') }}" class="text-reset">Veille</a>
+            <ul>
+                <li><a href="{{ path('actualites_rss1') }}" class="text-reset">Veille de “Didaktic”</a></li>
+                <li><a href="{{ path('actualites_rss2') }}" class="text-reset">Veille de “CoopIST Cirad”</a></li>
+                <li><a href="{{ path('actualites_rss3') }}" class="text-reset">Veille de “Inserm”</a></li>
+                <li><a href="{{ path('actualites_rss4') }}" class="text-reset">Veille de “OpenEdition Journals”</a></li>
+            </ul>
+        </li>
+    </ul>
+</li>
+<li><a href="{{ path('app_apropos') }}" class="text-reset">À propos</a></li>
+<li>
+    <a href="#" class="text-reset">Liens légaux :</a>
+    <ul>
+        <li><a href="{{ path('app_legal') }}" class="text-reset">Mentions légales</a></li>
+        <li><a href="{{ path('app_guide') }}" class="text-reset">Conditions générales d'utilisation</a></li>
+        <li><a href="{{ path('app_plan') }}" class="text-reset">Plan du site</a></li>
+        <li><a href="{{ path('app_access') }}" class="text-reset">Accessibilité</a></li>
+    </ul>
+</li>
+</ul>
+
+
+	</div>
+	</div>
+
+</section>
+<br>
+<br>
+{% endblock %}

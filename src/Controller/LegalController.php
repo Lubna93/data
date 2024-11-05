@@ -15,4 +15,27 @@ class LegalController extends AbstractController
             'controller_name' => 'LegalController',
         ]);
     }
+    #[Route('/accessibilite', name: 'app_access')]
+    public function access(): Response
+    {
+        return $this->render('legal/access.html.twig', [
+            'controller_name' => 'accessController',
+        ]);
+    }
+
+    #[Route('/plandusite', name: 'app_plan')]
+    public function plan(): Response
+    {
+        return $this->render('legal/plan.html.twig', [
+            'controller_name' => 'planController',
+        ]);
+    }
+
+    #[Route('/guide', name: 'app_guide')]
+    public function guide(): Response
+    {
+        return $this->render('legal/guide.html.twig', [
+            'controller_name' => 'guideController',
+        ]);
+    }
 }

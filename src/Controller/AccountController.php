@@ -5,28 +5,15 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
-
 use Symfony\Component\HttpFoundation\Request;
-use App\WsApogeeBundle\DependencyInjection\EtatIA;
-use App\WsApogeeBundle\DependencyInjection\WsAdministratif;
 use App\Entity\Account;
-use App\Entity\People;
-use L3\Bundle\LdapUserBundle\Entity\LdapUser;
 use App\Form\AccountFormType;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Repository\AccountRepository;
-use App\Repository\ActivityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Component\Mime\Email;
-use Symfony\Component\Mailer\Bridge\Google\Transport;
-use Symfony\Component\Mime\Address;
-use App\Service\FileUploader;
 use Doctrine\ORM\EntityManagerInterface;
-use Symfony\Component\HttpFoundation\Session\Session;
 
-use Symfony\Component\HttpClient\HttpClient;
 
 class AccountController extends AbstractController
 {
@@ -36,12 +23,10 @@ class AccountController extends AbstractController
         AccountRepository $accountRepository,
         ManagerRegistry $doctrine,
         Request $request,
-        MailerInterface $mailer,
+        MailerInterface $mailer
     ): Response
     {
         $account = new Account();
-
-        // $utilisateur = $this->getUser();
 
         $form = $this->createForm(AccountFormType::class, $account, [
             'action' => $this->generateUrl('app_account')
@@ -55,14 +40,32 @@ class AccountController extends AbstractController
             $em->flush();
 
             $this->addFlash('success', 'Votre compte a été créé !');
-
+            
             return $this->redirectToRoute('app_profile_show');
+            
         }
 
         return $this->render('account/index.html.twig', [
             'account_form' => $form->createView(),
             'account' => $account,
         ]);
+    }
+
+
+
+    #[Route('/email', name: 'app_mailer')]
+    public function sendEmail(MailerInterface $mailer): void
+    {
+        $email = (new Email())
+            ->from('blast@univ-montp3.fr')
+            ->to('lubna.akash@univ-montp3.fr', 'lubna.altungi@gmail.com')
+            ->subject('Time for Symfony Mailer!')
+            ->text('Sending emails is fun again!')
+            ->html('<p>See Twig integration for better HTML integration!</p>');
+
+        $mailer->send($email);
+
+        // return $this->redirectToRoute('homepage');
     }
 
 
@@ -89,4 +92,5 @@ class AccountController extends AbstractController
         return $this->redirectToRoute('homepage');
 
     }
+
 }

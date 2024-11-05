@@ -19,6 +19,15 @@
 <div class="container mt-2 p-5">
 <!-- Logo and Title -->
 <div class="row">
+
+{% for label, messages in app.flashes %}
+    {% for message in messages %}
+        <div class="alert alert-{{ label }}">
+            {{ message|trans }}
+        </div>
+    {% endfor %}
+{% endfor %}
+
     <div class="col-12 text-center">
         <img src="{{ asset('images/logo.png') }}" style="height:5rem;">
         
