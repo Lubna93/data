@@ -51,24 +51,6 @@ class AccountController extends AbstractController
         ]);
     }
 
-
-
-    #[Route('/email', name: 'app_mailer')]
-    public function sendEmail(MailerInterface $mailer): void
-    {
-        $email = (new Email())
-            ->from('blast@univ-montp3.fr')
-            ->to('lubna.akash@univ-montp3.fr', 'lubna.altungi@gmail.com')
-            ->subject('Time for Symfony Mailer!')
-            ->text('Sending emails is fun again!')
-            ->html('<p>See Twig integration for better HTML integration!</p>');
-
-        $mailer->send($email);
-
-        // return $this->redirectToRoute('homepage');
-    }
-
-
     #[Route('/delete/{id}', name: 'app_profile_delete')]
     public function delete(Account $account, EntityManagerInterface $entityManager): Response
     {

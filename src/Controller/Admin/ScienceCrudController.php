@@ -73,31 +73,4 @@ class ScienceCrudController extends AbstractCrudController
     }
 
 
-    public function configureActions(Actions $actions): Actions
-    {
-        $exportAction = Action::new('export')
-        ->linkToUrl(function () {
-            $request = $this->requestStack->getCurrentRequest();
-
-            return $this->adminUrlGenerator->setAll($request->query->all())
-                ->setAction('export')
-                ->generateUrl();
-        })
-        ->addCssClass('btn btn-success')
-        ->setIcon('fa fa-download')
-        ->createAsGlobalAction();
-
-        return parent::configureActions($actions)
-            ->add(Crud::PAGE_INDEX, $exportAction);
-    }
-
-    public function export(AdminContext $context, CsvExporter $csvExporter, FilterFactory $filterFactory)
-    {
-
-        $fields = FieldCollection::new($this->configureFields(Crud::PAGE_INDEX));
-        $filters = $this->container->get(FilterFactory::class)->create($context->getCrud()->getFiltersConfig(), $fields, $context->getEntity());
-        $queryBuilder = $this->createIndexQueryBuilder($context->getSearch(), $context->getEntity(), $fields, $filters);
-
-        return $csvExporter->createResponseFromQueryBuilder($queryBuilder, $fields, 'science.csv');
-    }
 }

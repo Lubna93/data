@@ -23,4 +23,12 @@ class ErrorController extends AbstractController
             'controller_name' => 'ErrorController',
         ]);
     }
+
+    #[Route('/enconstruction', name: 'app_construct')]
+    public function construct(): Response
+    {
+        return $this->render('error/construct.html.twig', [
+            'controller_name' => 'EnConstruction',
+        ]);
+    }
 }

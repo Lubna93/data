@@ -205,7 +205,7 @@ class OuvrirController extends AbstractController
             $rssFileNews = 'http://journals.openedition.org/revuehn/backend?format=rssdocuments';       
 
             $rss = simplexml_load_file($rssFileNews);
-            dump($rss);
+            // dump($rss);
     
             return $this->render('ouvrir/fluxrss4.html.twig', [
                 'rss' => $rss,

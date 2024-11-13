@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Error Page | Corpus Humanum{% endblock %}
+
+{% block body %}
+<style>
+
+</style>
+<div class="container">
+    <div class="text-center p-5">
+
+        <div class="text-center  ">
+            <img src="{{ asset('images/error/construct.png') }}" class="img-fluid" style="max-height:15rem;" >
+        </div>
+        
+        <div class="fs-1 pt-5"><strong>En constraction</strong></div>
+        <div class="fs-4"><strong>Bientôt en ligne</strong></div>
+            <a href="/">
+                <button class="btn btn-dark px-4 my-4">Page d'accueil</button>
+            </a>
+        </div>    
+</div>
+{% endblock %}

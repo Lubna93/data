@@ -25,33 +25,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt|error)|css|images|js)/
             security: false
-        # main:
-        #     pattern: ^/
-        #     security: true
-        #     lazy: true
-        #     provider: chain_provider
-        #     custom_authenticators:
-        #         - App\Security\ChainedAuthenticator         
-        #     logout:
-        #         path: /logout                            
-                           
-        # cas:
-        #     pattern: ^/cas/
-        #     provider: chain_provider
-        #     security: true
-        #     custom_authenticators:
-        #         - cas.security.authentication.authenticator
-        #     logout:
-        #         path: /logout
-
-        # casc:
-        #     pattern: ^/casc/
-        #     provider: chain_provider
-        #     security: true
-        #     custom_authenticators:
-        #         - casc.security.authentication.authenticator
-        #     logout:
-        #         path: /logout2
 
         cas:
             pattern: ^/cas/
@@ -61,6 +34,7 @@ security:
                 - cas.security.authentication.authenticator
             logout:
                 path: /logout
+            access_denied_handler: App\EventListener\AccessDeniedListener
 
         casc:
             pattern: ^/casc/
@@ -70,6 +44,7 @@ security:
                 - casc.security.authentication.authenticator
             logout:
                 path: /logout2
+            access_denied_handler: App\EventListener\AccessDeniedListener
 
         orcid:
             pattern: ^/connect/orcid
@@ -77,43 +52,23 @@ security:
             provider: app_user_provider
             custom_authenticators:
                 - App\Security\OrcidAuthenticator
+            access_denied_handler: App\EventListener\AccessDeniedListener
 
         main:
             pattern: ^/
             security: true
             lazy: true
             provider: chain_provider
+            access_denied_handler: App\EventListener\AccessDeniedListener
             custom_authenticators:
                 - App\Security\ChainedAuthenticator         
             logout:
                 path: /logout   
 
-
-
-        # login:
-        #     pattern: ^/api/login_check
-        #     stateless: true
-        #     provider: app_user_provider
-        #     json_login:
-        #         check_path: /api/login_check
-        #         success_handler: lexik_jwt_authentication.handler.authentication_success
-        #         failure_handler: lexik_jwt_authentication.handler.authentication_failure
-        #         username_path: email
-        #         password_path: password
-
-        # api:
-        #     pattern: ^/api
-        #     stateless: true
-        #     provider: app_user_provider
-        #     custom_authenticators:
-        #         - lexik_jwt_authentication.jwt_manager
-
-
-
     access_control:
-        # - { path: ^/api/login_check, roles: IS_AUTHENTICATED_ANONYMOUSLY }
-        # - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
-        # - { path: ^/connect/orcid, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin, roles: ROLE_SUPER_ADMIN }
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        - { path: ^/admin, roles: ROLE_MODERATOR }  
 
 when@test:
     security:

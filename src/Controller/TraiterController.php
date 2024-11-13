@@ -32,28 +32,11 @@ class TraiterController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             
-            //function to add the account once create entity
-            // $presentation->setAccount($this->getUser());
-            
-
             $em = $doctrine->getManager();
             $em->persist($data);
             $em->flush();
 
             $this->addFlash('success', 'Votre data a été créé !');
-            $toAddresses = ['lubna.akash@univ-montp3.fr'];
-            $ccAddresses = ['lubna.altungi@gmail.com'];
-            //mailer
-            $email = (new Email())
-                ->from('blast@univ-montp3.fr')
-                ->to(...$toAddresses)
-                ->cc(...$ccAddresses)
-                ->subject('Formulaire de contact')
-                ->text('Un message a été envoyé le ')
-                ->html('<p>Un message a été envoyé le </p>');
-
-                $mailer->send($email);
-
             return $this->redirectToRoute('app_traiter');
             
         }

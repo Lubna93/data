@@ -21,7 +21,7 @@ class OrcidService
         // Generate the authorization URL
         $baseUri = 'https://orcid.org/oauth/authorize';
         $queryParams = [
-            'client_id' => 'APP-COWCB05BE2SBGHJ3',
+            'client_id' => 'APP-YCMGJDTL2ZCZGG8Y',
             'response_type' => 'code',
             'scope' => '/authenticate',
             // 'redirect_uri' => 'https://corpus-humanum-test.univ-montp3.fr',
@@ -40,11 +40,11 @@ class OrcidService
         $params = [
             'form_params' => [
                 'grant_type' => 'authorization_code',
-                'client_id' => 'APP-COWCB05BE2SBGHJ3',
-                'client_secret' => '07aafe65-88a1-4832-b08c-8cd762d93e92',
+                'client_id' => 'APP-YCMGJDTL2ZCZGG8Y',
+                'client_secret' => '64cbebb4-ede5-4413-a4b7-d16e8059d16e',
                 // 'redirect_uri' => 'https://corpus-humanum-test.univ-montp3.fr',
-                // 'redirect_uri' => 'http://127.0.0.1:8000',
-                'redirect_uri' => 'https://orcid.org',
+                'redirect_uri' => 'http://127.0.0.1:8000',
+                // 'redirect_uri' => 'https://orcid.org',
                 'code' => $code,
             ],
         ];

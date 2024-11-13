@@ -18,14 +18,6 @@ class DefaultController extends AbstractController
         return $this->redirect($url . $target);
     }
     
-
-//  HAL
-    // #[Route('/login2', name: 'login2')]
-    // public function login2(Request $request) {
-    //     $target2 = urlencode($this->getParameter('cas_login_target2').'/force2');
-    //     $url2 = 'https://'.$this->getParameter('cas_host2') . ((($this->getParameter('cas_port2')!=80) || ($this->getParameter('cas_port2')!=443)) ? ":".$this->getParameter('cas_port2') : "") . $this->getParameter('cas_path2') . '/login?service=';
-    //     return $this->redirect($url2 . $target2);
-    // }
   
     #[Route('/logout', name: 'logout')]
     public function logout(Request $request) {
@@ -58,20 +50,6 @@ class DefaultController extends AbstractController
 
             return $this->redirect($this->generateUrl('index'));
     }
-
-    // #[Route('/force2', name: 'force2')]
-    // public function force2(Request $request) {
-
-    //         if ($this->getParameter("cas_gateway2")) {
-    //             if (!isset($_SESSION)) {
-    //                     session_start();
-    //             }
-
-    //             session_destroy();
-    //         }
-
-    //         return $this->redirect($this->generateUrl('index'));
-    // }
 
 
     // Controller for the second CAS login (login2)
